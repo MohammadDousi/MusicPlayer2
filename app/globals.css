@@ -2,34 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @import "./all.css";
+@import "./item-playlist.css";
 
-/* :root {
+  /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 } */
-
-/* @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
 } */
-
-@layer base {
+  @layer base {
   * {
-    font-family: IRANSansXFaNum;
+    /* font-family: IRANSansXFaNum; */
     line-height: unset;
     direction: ltr;
     @apply p-0 m-0 box-border outline-0 no-underline list-none border-0 border-transparent;
   }
 
-
   body {
-    @apply w-screen h-screen overflow-x-hidden bg-slate-900;
+    @apply w-screen h-screen overflow-x-hidden bg-gradient-to-tr from-slate-900 to-slate-700 ;
   }
 
+  
+  ::-webkit-scrollbar {
+    @apply w-0;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-800 ;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-500 rounded-xl;
+  }
+  
 }

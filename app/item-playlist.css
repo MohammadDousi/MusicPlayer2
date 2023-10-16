@@ -1,0 +1,37 @@
+/* item play list */
+
+.itemPlaylist {
+  @apply w-full h-16 p-3
+  flex flex-row justify-between items-center gap-3 
+  rounded-xl overflow-hidden
+  hover:bg-gradient-to-r hover:from-cyan-500/70 hover:to-purple-500/50
+  duration-300;
+}
+
+.itemPlaylist > img {
+  @apply h-full object-cover rounded-lg shadow-xl;
+}
+
+.nameSinger {
+  @apply w-3/4 h-full mt-1 flex flex-col flex-nowrap justify-center items-start ;
+}
+
+.nameSinger > p {
+  @apply text-white/70 text-sm ;
+}
+
+.nameSinger > p:nth-child(2) {
+  @apply text-white/25;
+}
+
+.clearAndPlayItem {
+  @apply flex flex-row justify-center items-center gap-3;
+}
+
+.clearAndPlayItem > i {
+  @apply text-sm text-white/20 hover:text-white cursor-pointer duration-300;
+}
+
+.clearAndPlayItem > i:nth-child(2) {
+  @apply text-lg;
+}

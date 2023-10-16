@@ -71,8 +71,9 @@ export default function Home() {
       </div>
 
       {/*  main contanier  */}
-      <div className="w-4/5 h-full overflow-hidden">
-        <div className="w-full px-3 py-2 flex flex-row justify-between items-center gap-6">
+      <div className="w-4/5 h-full px-3 flex flex-col justify-start items-center gap-6 overflow-hidden">
+        {/*  search box and profile  */}
+        <div className="w-full py-2 flex flex-row justify-between items-center gap-6">
           {/* profile */}
           <div className="w-4/12 flex flex-row justify-center items-center gap-6 overflow-hidden">
             <div className="w-full h-9 flex flex-row justify-start items-center gap-3 bg-gray-600/50 rounded-lg overflow-hidden">
@@ -84,7 +85,6 @@ export default function Home() {
               <p className="bg-transparent text-sm text-gray-400">Danil Moyu</p>
 
               <i className="fa fa-angle-down text-sm text-gray-400"></i>
-
             </div>
             <i className="fa fa-bell text-gray-400"></i>
           </div>
@@ -98,6 +98,26 @@ export default function Home() {
               placeholder="Search Music or Singer"
             />
           </div>
+        </div>
+
+        <div className="w-full h-40 flex flex-row justify-start items-start gap-6 rounded-xl shadow-lg overflow-hidden">
+        
+          <div className="w-full h-40 rounded-xl shadow-lg overflow-hidden">
+            <img
+              src="/banner.jpg"
+              alt="/banner.png"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="w-full h-40 rounded-xl shadow-lg overflow-hidden">
+            <img
+              src="/banner.jpg"
+              alt="/banner.png"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        
         </div>
       </div>
     </main>

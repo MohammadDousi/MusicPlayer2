@@ -1,7 +1,7 @@
 /* item play list */
 
 .itemPlaylist {
-  @apply w-full h-16 p-3
+  @apply w-full h-12 px-4 py-2
   flex flex-row justify-between items-center gap-3 
   rounded-xl overflow-hidden
   hover:bg-gradient-to-r hover:from-cyan-500/70 hover:to-purple-500/50
@@ -17,11 +17,11 @@
 }
 
 .nameSinger > p {
-  @apply text-white/70 text-sm ;
+  @apply text-white/70 text-xs ;
 }
 
 .nameSinger > p:nth-child(2) {
-  @apply text-white/25;
+  @apply text-white/30;
 }
 
 .clearAndPlayItem {
@@ -29,9 +29,9 @@
 }
 
 .clearAndPlayItem > i {
-  @apply text-sm text-white/20 hover:text-white cursor-pointer duration-300;
+  @apply text-xs text-white/20 hover:text-white cursor-pointer duration-300;
 }
 
 .clearAndPlayItem > i:nth-child(2) {
-  @apply text-lg;
+  @apply text-sm;
 }

@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @import "./all.css";
-@import "./item-playlist.css";
 
   /* :root {
   --foreground-rgb: 0, 0, 0;
@@ -41,5 +40,7 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-slate-500 rounded-xl;
   }
+
+
   
 }

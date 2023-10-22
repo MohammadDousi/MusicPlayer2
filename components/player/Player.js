@@ -1,11 +1,22 @@
-const Player = () => {
+import Image from "next/image";
+
+import cover from "../../public/image/coverSongs/cover17.jpg"
+
+export default function Player() {
   return (
     <div className="w-full h-1/2 py-3 px-6 flex flex-col justify-center items-center gap-6 bg-gradient-to-r from-transparent to-cyan-900 rounded-2xl">
-      <img
+      <Image
+        src={cover}
+        alt="cover.jpg"
+        className="w-2/3 rounded-3xl object-cover"
+        quality={100}
+        placeholder="blur"
+      />
+      {/* <img
         src="image/coverSongs/cover.jpg"
         alt="cover.jpg"
         className="w-2/3 rounded-3xl object-cover"
-      />
+      /> */}
       <div className="w-full flex flex-col justify-center items-center">
         <p className="text-white/70 text-base">Tulsa Jesus Freak</p>
         <p className="text-white/30 text-sm">Lana del Ray</p>
@@ -35,6 +46,4 @@ const Player = () => {
       </div>
     </div>
   );
-};
-
-export default Player;
+}

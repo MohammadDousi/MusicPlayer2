@@ -1,27 +1,47 @@
 import Image from "next/image";
-
 import Header from "@/components/header/Header";
 
 import ItemArtists from "@/components/artists/ItemArtists";
 import Playlist from "@/components/playlist/Playlist";
 import Player from "@/components/player/Player";
+import next from "next";
 
-const artists = [
-  { singer: "dua lipa", pic: "profile2.png" },
-  { singer: "dua lipa", pic: "profile1.png" },
-  { singer: "dua lipa", pic: "profile4.png" },
-  { singer: "dua lipa", pic: "profile7.png" },
-  { singer: "dua lipa", pic: "profile8.png" },
-];
+let artists = {};
+let formData = new FormData();
+async function postData(url = "", data) {
+  const response = await fetch(
+    url,
+    { method: "POST", body: data },
+    { next: { revalidate: 30 } }
+  );
+  return response.json();
+}
 
-export default function Home() {
+export default async function Home() {
+  formData.append("fun", "newset");
+  artists = await postData(
+    "https://music.kaktusprog.ir/assets/php/function.php",
+    formData
+  );
+
+  for (let [key, value] of formData) {
+    formData.delete(key, value);
+  }
+  
+  {
+    /* {res.map((item) => (
+        <h2 className="text-white text-4xl w-full text-center">
+          {item.name}
+        </h2>
+      ))} */
+  }
+
   return (
-    <main className="w-full h-full p-3 flex flex-row-reverse justify-center items-center gap-2">
-      {/*  sidebar playlist  */}
+    <main className="w-full h-full p-3 flex flex-row-reverse justify-center items-center gap-2 bg-gradient-to-tr from-slate-900 to-slate-700">
+      {/*  sidebar playlist - playlist - player */}
+
       <div className="w-1/5 p-3 h-full bg-slate-950/50 overflow-hidden rounded-2xl">
-        {/*  playlist */}
         <Playlist />
-        {/* player */}
         <Player />
       </div>
 

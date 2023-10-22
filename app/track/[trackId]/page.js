@@ -1,13 +1,24 @@
-import Link from "next/link";
+let data = {};
+let formData = new FormData();
 
-export default function Artists(props) {
-  const { data } = props;
+export default async function trackId({ params }) {
+  formData.append("fun", "getSingleSong");
+  formData.append("id", params.trackId);
+
+  data = await postData(
+    "https://music.kaktusprog.ir/assets/php/function.php",
+    formData
+  );
+
+  for (let [key, value] of formData) {
+    formData.delete(key, value);
+  }
 
   return (
     <>
       {data &&
         data.map((items) => (
-          <Link href={`/track/${items.id}`}>
+         
             <div className="p-2 flex flex-col justify-center items-center gap-2 bg-slate-950/50 rounded-2xl">
               <img
                 src={items.cover}
@@ -18,7 +29,7 @@ export default function Artists(props) {
                 {items.singer}
               </h2>
             </div>
-          </Link>
+          
         ))}
 
       {!data && (
@@ -28,4 +39,13 @@ export default function Artists(props) {
       )}
     </>
   );
+}
+
+async function postData(url = "", data) {
+  const response = await fetch(
+    url,
+    { method: "POST", body: data },
+    { next: { revalidate: 30 } }
+  );
+  return response.json();
 }

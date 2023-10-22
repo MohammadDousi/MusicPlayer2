@@ -25,7 +25,7 @@
   }
 
   body {
-    @apply w-screen h-screen overflow-x-hidden bg-gradient-to-tr from-slate-900 to-slate-700 ;
+    @apply w-screen h-screen overflow-x-hidden  ;
   }
 
   

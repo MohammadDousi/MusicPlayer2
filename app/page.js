@@ -37,7 +37,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="w-full h-full p-3 flex flex-row-reverse justify-center items-center gap-2 bg-gradient-to-tr from-slate-900 to-slate-700">
+    <main className="w-full h-full p-3 flex flex-row-reverse justify-center items-center gap-2 ">
       {/*  sidebar playlist - playlist - player */}
 
       <div className="w-1/5 p-3 h-full bg-slate-950/50 overflow-hidden rounded-2xl">

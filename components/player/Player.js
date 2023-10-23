@@ -1,8 +1,47 @@
-import Image from "next/image";
+"use client";
 
-import cover from "../../public/image/coverSongs/cover17.jpg"
+import React from "react";
+import Image from "next/image";
+import { useState } from "react";
+import cover from "../../public/image/coverSongs/cover17.jpg";
 
 export default function Player() {
+
+  const [audio] = useState(new Audio());
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const playBtnClick = (event) => {
+    // event.preventDefault();
+
+    if (isPlaying) {
+      loadSong();
+    } else {
+      puaseSong();
+    }
+  };
+
+  const loadSong = () => {
+    audio.src = "";
+    audio.src =
+      "https://music.kaktusprog.ir/assets/file/song/save your tears.mp3";
+    audio.load();
+    playSong();
+  };
+
+  const playSong = () => {
+    // if (currentTime) {
+    //   audio.currentTime = currentTime;
+    // }
+    // audio.addEventListener("timeupdate", updateProgress);
+    audio.play();
+    setIsPlaying(false);
+  };
+
+  const puaseSong = () => {
+    audio.pause();
+    setIsPlaying(true);
+  };
+
   return (
     <div className="w-full h-1/2 py-3 px-6 flex flex-col justify-center items-center gap-6 bg-gradient-to-r from-transparent to-cyan-900 rounded-2xl">
       <Image
@@ -24,7 +63,14 @@ export default function Player() {
       <div className="w-full flex flex-row justify-between items-center">
         <i className="fa fa-repeat px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
         <i className="fa fa-backward-step px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
-        <i className="fa fa-circle-play px-2 text-white/70 hover:text-white text-3xl cursor-pointer duration-300"></i>
+        <i
+          className={
+            isPlaying
+              ? "fa fa-circle-play px-2 text-white/70 hover:text-white text-3xl cursor-pointer duration-300"
+              : "fa fa-pause px-2 text-white/70 hover:text-white text-3xl cursor-pointer duration-300"
+          }
+          onClick={(e) => playBtnClick()}
+        ></i>
         <i className="fa fa-step-forward px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
         <i className="fa fa-shuffle px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
       </div>

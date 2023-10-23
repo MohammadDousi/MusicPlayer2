@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Artists(props) {
   const { data } = props;
 
@@ -14,6 +14,15 @@ export default function Artists(props) {
                 alt={items.cover}
                 className="w-[88px] h-28 object-cover rounded-full shadow-xl"
               />
+
+              {/* <Image
+                src={items.cover}
+                alt={items.cover}
+                className="w-[88px] h-28 object-cover rounded-full shadow-xl"
+                quality={100}
+                width={0}
+                height={0}
+              /> */}
               <h2 className="text-white/40 text-xs font-normal capitalize ">
                 {items.singer}
               </h2>

@@ -1,4 +1,8 @@
-const ItemPlaylist = (props) => {
+
+
+import cover from "@/public/image/coverSongs/cover.jpg"
+
+export default function ItemPlaylist() {
   return (
     <div
       className="w-full h-16 px-2 py-3 hover:py-2 hover:px-3
@@ -8,7 +12,7 @@ const ItemPlaylist = (props) => {
     duration-300"
     >
       <img
-        src="image/coverSongs/cover.jpg"
+        src={cover}
         alt="cover.jpg"
         className="h-full object-cover rounded-lg shadow-lg"
       />
@@ -25,6 +29,4 @@ const ItemPlaylist = (props) => {
       </div>
     </div>
   );
-};
-
-export default ItemPlaylist;
+}

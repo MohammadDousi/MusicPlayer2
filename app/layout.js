@@ -11,15 +11,14 @@ export const metadata = {
 import Playlist from "@/components/playlist/Playlist";
 import Player from "@/components/player/Player";
 import Header from "@/components/header/Header";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="w-4/5 h-full px-3 flex flex-col justify-start items-center gap-4">
+        <main className="w-4/5 h-full px-3 flex flex-col justify-start items-center gap-4 overflow-auto">
           <Header />
-          <section className="w-full h-full flex flex-col justify-start items-center gap-4 overflow-auto">
-            {children}
-          </section>
+          {children}
         </main>
         <div className="w-1/5 p-3 h-full bg-slate-950/50 overflow-hidden rounded-2xl">
           <Playlist />

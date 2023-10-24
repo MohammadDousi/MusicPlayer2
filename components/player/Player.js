@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from "react";
 import Image from "next/image";
@@ -6,8 +6,10 @@ import { useState } from "react";
 import cover from "../../public/image/coverSongs/cover17.jpg";
 
 export default function Player() {
+  
 
-  const [audio] = useState(new Audio());
+  // const [audio] = useState(new Audio());
+  // const audio = new Audio();
   const [isPlaying, setIsPlaying] = useState(true);
 
   const playBtnClick = (event) => {

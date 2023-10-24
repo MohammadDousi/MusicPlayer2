@@ -2,8 +2,7 @@ import { notFound } from "next/navigation";
 
 let formData = new FormData();
 
-export default async function trackId({ params }) {
-  // get data on server
+export async function generateMetadata({ params }) {
   formData.append("fun", "getSingleSong");
   formData.append("id", params.trackId);
   const data = await postData(
@@ -14,96 +13,114 @@ export default async function trackId({ params }) {
     formData.delete(key, value);
   }
 
+  return {
+    title: `${data.singer} - ${data.name} - MusicLand`,
+    description: "Momment Music Service 24/7",
+  };
+}
+
+export default async function trackId({ params }) {
+  // get data on server
+  formData.append("fun", "getSingleSong");
+  formData.append("id", params.trackId);
+  const data = await postData(
+    "https://music.kaktusprog.ir/assets/php/function.php",
+    formData
+  );
+
+  for (let [key, value] of formData) {
+    formData.delete(key, value);
+  }
+
   return (
     <>
-      <section className="w-full h-72 relative flex flex-row overflow-hidden rounded-2xl bg-slate-900/50">
-        <img
-          src={data[0].cover}
-          alt={data[0].cover}
-          className="w-full h-full z-0 absolute object-cover blur-xl opacity-30"
-        />
+      <section className="w-full space-y-10 overflow-auto">
+        {data == false && notFound()}
 
-        <section className="w-full h-full z-30 p-6 flex flex-row justify-start items-end gap-6 overflow-hidden">
-          <img
-            src={data[0].cover}
-            alt={data[0].cover}
-            className="h-full rounded-xl shadow-xl object-cover"
-          />
+        {/* image  and name container */}
 
-          <div className="w-2/3 flex flex-col justify-start items-start gap-4 mb-5">
-            <p className="w-full text-white text-5xl font-black capitalize">
-              {data[0]?.name}
-            </p>
+        {data && (
+          <section className="w-full h-64 relative flex flex-row overflow-hidden rounded-2xl bg-slate-800/50 shadow-xl">
+            <img
+              src={data?.cover}
+              alt={data?.cover}
+              className="w-full h-full z-0 absolute object-cover blur-xl opacity-20"
+            />
 
-            <p className="w-full text-white text-base font-normal capitalize tracking-wide">
-              {`song by ${data[0]?.singer} . ${data[0]?.play} plays . ${data[0]?.slike} Likes . ${data[0]?.year}/${data[0]?.month}/${data[0]?.day} . 4:00 `}
-            </p>
+            <section className="w-full h-full z-30 p-4 flex flex-row justify-start items-end gap-6 overflow-hidden">
+              <img
+                src={data?.cover}
+                alt={data?.cover}
+                className="h-full rounded-xl shadow-xl object-cover"
+              />
 
-            {/* <div className="btn-box">
-              <button>
-                <i className="fa fa-play"></i>
-                <p>Play Now</p>
-              </button>
-              <button>
-                <i className="fa fa-bookmark"></i>
-                <p>Bookmark</p>
-              </button>
-              <button>
-                <i className="fa fa-heart"></i>
-                <p>Like</p>
-              </button>
-              <button>
-                <i className="fa fa-download"></i>
-                <p>Download</p>
-              </button>
-              <button>
-                <i className="fa fa-share"></i>
-                <p>Share</p>
-              </button>
-            </div> */}
+              <div className="flex flex-col justify-start items-start gap-4">
+                <p className="w-full text-white text-5xl font-black capitalize">
+                  {data?.name}
+                </p>
 
-          </div>
+                <p className="w-full text-white text-base font-normal capitalize tracking-wide">
+                  {`song by ${data?.singer} . ${data?.play} plays . ${data?.slike} Likes . ${data?.year}/${data?.month}/${data?.day} . 4:00 `}
+                </p>
+              </div>
+            </section>
+          </section>
+        )}
+
+        {/* play, share, download, like button container */}
+        <section className="w-full flex flex-row justify-center items-center gap-4">
+          <i className="fa fa-play-circle text-6xl text-white hover:animate-pulse duration-300 cursor-pointer"></i>
+          <i className="fa fa-heart w-9 h-9 text-sm text-white hover:text-cyan-600 bg-white/20 hover:bg-white duration-300 shadow-xl rounded-full flex justify-center items-center cursor-pointer"></i>
+          <i className="fa fa-download w-9 h-9 text-sm  text-white hover:text-cyan-600 bg-white/20 hover:bg-white duration-300 shadow-xl rounded-full flex justify-center items-center cursor-pointer"></i>
+          <i className="fa fa-share-alt w-9 h-9 text-sm  text-white hover:text-cyan-600 bg-white/20 hover:bg-white duration-300 shadow-xl rounded-full flex justify-center items-center cursor-pointer"></i>
         </section>
-        
+
+        <div className="w-full flex flex-col justify-start items-start gap-5 rounded-2xl">
+          <h1 className="text-white/70 text-2xl font-bold capitalize">
+            more songs
+          </h1>
+
+          {/* <div className="w-full h-auto flex flex-col justify-center items-start gap-4">
+            <div className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/30 hover:bg-slate-600 duration-300 rounded-xl">
+              <div className="w-1/2 flex h-full flex-row justify-start items-center gap-4">
+                <img
+                  src={data?.cover}
+                  alt={data?.cover}
+                  className="h-full object-cover rounded-lg shadow-xl"
+                />
+
+                <div className="flex flex-row justify-center items-center gap-10 pl-4">
+                  <i className="fa fa-play text-white cursor-pointer"></i>
+                  <p className="text-white/70 text-sm font-bold tracking-wider">
+                    Tulsa Jesus Freak
+                  </p>
+                  <p className="text-white/40 text-sm tracking-wide">
+                    Lana del Ray
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row justify-center items-center gap-8 pr-4">
+                <p className="text-sm text-white/40">4:35</p>
+                <i className="fa fa-ellipsis-h text-lg text-white cursor-pointer duration-300 hover:text-cyan-500"></i>
+              </div>
+            </div>
+
+          </div> */}
+        </div>
       </section>
-
-      {/* <section className="lyrics-details">
-        <div className="btn-details" onClick={showTextSong}>
-          <p>Lyrics & Details</p>
-          <i className="fa fa-angle-right"></i>
-        </div>
-
-        <div className="body-details" style={{ height: `${bodyTextHeight}%` }}>
-          <p>{song?.text}</p>
-        </div>
-      </section> */}
-
-      {/* {data && (
-        <div className="p-2 flex flex-col justify-center items-center gap-2 bg-slate-950/50 rounded-2xl">
-          <img
-            src={data[0].cover}
-            alt={data[0].cover}
-            className="w-[88px] h-28 object-cover rounded-full shadow-xl"
-          />
-          <h2 className="text-white/40 text-xs font-normal capitalize ">
-            {data[0].name}
-          </h2>
-        </div>
-      )}
-
-      {!data || (data == "idNotFound" && notFound())} */}
     </>
   );
 }
 
+// funcation get data on server and pass to trackId funcation
 async function postData(url = "", data) {
-  const res = await fetch(
-    url,
-    { method: "POST", body: data },
-    { next: { revalidate: 5 } }
-  );
+  const res = await fetch(url, {
+    method: "POST",
+    body: data,
+    next: { revalidate: 0 },
+  });
 
-  if (!res.ok || res === "idNotFound") return undefined;
+  if (!res.ok) return undefined;
 
   return res.json();
 }

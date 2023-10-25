@@ -9,7 +9,6 @@ export default function Player() {
   
 
   // const [audio] = useState(new Audio());
-  // const audio = new Audio();
   const [isPlaying, setIsPlaying] = useState(true);
 
   const playBtnClick = (event) => {
@@ -45,7 +44,7 @@ export default function Player() {
   };
 
   return (
-    <div className="w-full h-1/2 py-3 px-6 flex flex-col justify-center items-center gap-6 bg-gradient-to-r from-transparent to-cyan-900 rounded-2xl">
+    <div className="w-full h-1/2 py-3 px-6 flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl">
       <Image
         src={cover}
         alt="cover.jpg"

@@ -1,3 +1,6 @@
+
+
+import TitleContainer from "@/components/titleContainer/TitleContainer";
 import { notFound } from "next/navigation";
 
 let formData = new FormData();
@@ -13,10 +16,17 @@ export async function generateMetadata({ params }) {
     formData.delete(key, value);
   }
 
-  return {
-    title: `${data.singer} - ${data.name} - MusicLand`,
-    description: "Momment Music Service 24/7",
-  };
+  if (data) {
+    return {
+      title: `${data.singer} - ${data.name} - MusicLand`,
+      description: "Momment Music Service 24/7",
+    };
+  } else {
+    return {
+      title: "No result found - MusicLand",
+      description: "Momment Music Service 24/7",
+    };
+  }
 }
 
 export default async function trackId({ params }) {
@@ -76,9 +86,7 @@ export default async function trackId({ params }) {
         </section>
 
         <div className="w-full flex flex-col justify-start items-start gap-5 rounded-2xl">
-          <h1 className="text-white/70 text-2xl font-bold capitalize">
-            more songs
-          </h1>
+          <TitleContainer title="more songs" href="" />
 
           {/* <div className="w-full h-auto flex flex-col justify-center items-start gap-4">
             <div className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/30 hover:bg-slate-600 duration-300 rounded-xl">

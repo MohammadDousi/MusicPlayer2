@@ -14,7 +14,7 @@ export default function Artists(props) {
                 className="w-[88px] h-28 object-cover rounded-full shadow-xl"
               />
 
-              <h2 className="text-white/40 text-xs font-normal capitalize ">
+              <h2 className="text-white/40 text-xs font-normal capitalize tracking-wide ">
                 {items.name}
               </h2>
             </div>

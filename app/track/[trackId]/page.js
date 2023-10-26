@@ -1,5 +1,3 @@
-
-
 import TitleContainer from "@/components/titleContainer/TitleContainer";
 import { notFound } from "next/navigation";
 

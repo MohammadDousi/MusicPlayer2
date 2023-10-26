@@ -3,9 +3,17 @@
 import Link from "next/link";
 import { addPlaylist } from "@/app/redux/features/playlistSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export default function NewTracks({ recentlySong }) {
+
+
   const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(addPlaylist(recentlySong && recentlySong[recentlySong.length - 1]));
+  },[])
+  
+  
   const selector = useSelector((state) => state.playlistSlice);
 
   return (

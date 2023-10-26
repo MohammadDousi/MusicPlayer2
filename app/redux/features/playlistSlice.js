@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const initialState = {
   list: [],
+  play: false,
 };
 
 export const playlist = createSlice({
@@ -13,15 +14,32 @@ export const playlist = createSlice({
   initialState,
 
   reducers: {
-    addPlaylist: (state, action) => {
+    play: (state) => {
       return {
-        list: [...state.list, action.payload],
+        ...state,
+        play: true,
       };
+    },
+    pause: (state) => {
+      return {
+        ...state,
+        play: false,
+      };
+    },
+    addPlaylist: (state, action) => {
+      const foundSong = state.list.find((x) => x.id === action.payload.id);
+      if (!foundSong) {
+        return {
+          ...state,
+          list: [...state.list, action.payload],
+        };
+      }
     },
     removePlaylist: (state) => {},
     playNext: (state) => {},
   },
 });
 
-export const { addPlaylist, removePlaylist, playNext } = playlist.actions;
+export const { play, pause, addPlaylist, removePlaylist, playNext } =
+  playlist.actions;
 export default playlist.reducer;

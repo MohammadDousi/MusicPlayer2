@@ -133,9 +133,8 @@ export default async function Home() {
 
             <div className="w-full flex flex-col justify-center items-start gap-4">
               {recentlySong.map((song) => (
-                <div className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/50 hover:bg-slate-600/50 duration-300 rounded-xl">
+                <div key={song.id} className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/50 hover:bg-slate-600/50 duration-300 rounded-xl">
                   <Link
-                    key={song.id}
                     href={`/track/${song.id}`}
                     className="h-full"
                   >

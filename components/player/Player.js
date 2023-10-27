@@ -1,43 +1,43 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
-import cover from "../../public/image/coverSongs/cover17.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { play, pause } from "@/app/redux/features/playlistSlice";
+import { pause } from "@/app/redux/features/playlistSlice";
 
 export default function Player() {
   const [audio] = useState(new Audio());
-
+  const [onPlay, setOnPlay] = useState([]);
   let dispatch = useDispatch();
+
   const state = useSelector((state) => state.playlistSlice);
-
   const isPlaying = state.play;
+  let indexPlay = state.indexPlay;
 
-  const onPlay = state.list && state.list[state.list.length - 1];
+  useEffect(() => {
+    if (indexPlay != null) {
+      setOnPlay(indexPlay);
+      loadSong(indexPlay.name);
+    } else {
+      setOnPlay(state.list && state.list[state.list.length - 1]);
+    }
+  }, [onPlay, indexPlay]);
 
   const playBtnClick = () => {
-    if (!isPlaying) {
-      loadSong();
-    } else {
-      puaseSong();
-    }
+    !isPlaying ? loadSong(onPlay?.name) : puaseSong();
   };
 
-  const loadSong = () => {
-    audio.src = "";
-    audio.src =
-      "https://music.kaktusprog.ir/assets/file/song/save your tears.mp3";
+  const loadSong = (name) => {
+    audio.src = `https://music.kaktusprog.ir/assets/file/song/${name}.mp3`;
     audio.load();
     playSong();
   };
+  
   const playSong = () => {
     // if (currentTime) {
     //   audio.currentTime = currentTime;
     // }
     // audio.addEventListener("timeupdate", updateProgress);
     audio.play();
-    dispatch(play());
   };
 
   const puaseSong = () => {
@@ -47,8 +47,6 @@ export default function Player() {
 
   return (
     <>
-      
-      
       <div className="w-full h-1/2 py-3 px-6 flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl">
         <img
           src={onPlay?.cover}

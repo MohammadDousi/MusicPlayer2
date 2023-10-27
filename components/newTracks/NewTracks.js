@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { addPlaylist } from "@/app/redux/features/playlistSlice";
+import { addPlaylist , play } from "@/app/redux/features/playlistSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -25,6 +25,7 @@ export default function NewTracks({ recentlySong }) {
             className="w-full flex flex-col justify-start items-start gap-4 cursor-pointer"
             onClick={() => {
               dispatch(addPlaylist(track));
+              dispatch(play(track));
             }}
           >
             {/* <Link href={`/track/${track.id}`} className="w-full"> */}

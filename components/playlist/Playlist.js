@@ -2,16 +2,10 @@
 import { play } from "@/app/redux/features/playlistSlice";
 import ItemPlaylist from "./ItemPlaylist";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function Playlist() {
   let data = useSelector((state) => state.playlistSlice.list);
-
-  const dispatch = useDispatch();
-
-  function playHandler(data) {
-    dispatch(play());
-  }
 
   return (
     <div className="w-full h-1/2 pt-1 pb-2  flex flex-col justify-start items-center gap-1 overflow-hidden">
@@ -29,7 +23,7 @@ export default function Playlist() {
       )}
 
       {data && (
-        <ItemPlaylist track={data} playHandler={() => playHandler(data)} />
+        <ItemPlaylist track={data}/>
       )}
     </div>
   );

@@ -1,12 +1,11 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
-import { list } from "postcss";
-import { useState } from "react";
 
 const initialState = {
   list: [],
   play: false,
+  indexPlay: null,
 };
 
 export const playlist = createSlice({
@@ -14,11 +13,18 @@ export const playlist = createSlice({
   initialState,
 
   reducers: {
-    play: (state) => {
-      return {
-        ...state,
-        play: true,
-      };
+    play: (state, action) => {
+
+        return {
+          ...state,
+          play: true,
+          indexPlay: action.payload,
+        };
+
+      // return {
+      //   ...state,
+      //   play: true,
+      // };
     },
     pause: (state) => {
       return {
@@ -27,8 +33,8 @@ export const playlist = createSlice({
       };
     },
     addPlaylist: (state, action) => {
-      const foundSong = state.list.find((x) => x.id === action.payload.id);
-      if (!foundSong) {
+      const foundTrack = state.list.find((x) => x.id === action.payload.id);
+      if (!foundTrack) {
         return {
           ...state,
           list: [...state.list, action.payload],

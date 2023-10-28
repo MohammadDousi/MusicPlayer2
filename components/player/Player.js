@@ -10,13 +10,11 @@ export default function Player() {
   let dispatch = useDispatch();
 
   const state = useSelector((state) => state.playlistSlice);
-  const isPlaying = state.play;
+  const [isPlaying, setIsPlaying] = useState(false);
   let indexPlay = state.indexPlay;
-  let removeItem = state.removeItem;
-
-  console.log("remove item => " + removeItem && removeItem);
 
   useEffect(() => {
+    setIsPlaying(state.play);
     if (indexPlay != null) {
       setOnPlay(indexPlay);
       loadSong(indexPlay.name);
@@ -26,7 +24,13 @@ export default function Player() {
   }, [onPlay, indexPlay]);
 
   const playHandler = () => {
-    !isPlaying ? loadSong(onPlay?.name) : puaseSong();
+    if (!isPlaying) {
+      loadSong(onPlay?.name);
+      setIsPlaying(true);
+    } else {
+      puaseSong();
+      setIsPlaying(false);
+    }
   };
 
   const loadSong = (name) => {
@@ -70,17 +74,24 @@ export default function Player() {
 
   return (
     <>
-      <div className="w-full h-3/5 py-3 px-6 flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl">
+      {audio?.addEventListener("ended", forwardHandler)}
+      <div className="w-full relative h-3/5 py-3 px-6 flex flex-col justify-around items-center bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl overflow-hidden">
         <img
           src={onPlay?.cover}
           alt={onPlay?.cover}
-          className="w-2/3 rounded-3xl object-cover"
+          className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
         />
-        <div className="w-full flex flex-col justify-center items-center">
+
+        <div className="w-full flex flex-col justify-center items-center z-10">
+          <img
+            src={onPlay?.cover}
+            alt={onPlay?.cover}
+            className="w-full mb-3 rounded-3xl shadow-2xl object-cover z-10"
+          />
           <p className="text-white/70 text-base">{onPlay?.name}</p>
           <p className="text-white/30 text-sm">{onPlay?.singer}</p>
         </div>
-        <div className="w-full flex flex-row justify-between items-center">
+        <div className="w-full flex flex-row justify-between items-center z-10">
           <i className="fa fa-repeat px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
           <i
             onClick={() => parevantHandler()}
@@ -115,7 +126,13 @@ export default function Player() {
             id="badge-time"
             // style={{ transform: `translateX(${badge}px)` }}
           ></span>
+
         </div>
+        <div className="w-full flex flex-row justify-between items-center">
+          <p className="text-xs text-white/70">6:58</p>
+          <p className="text-xs text-white/70">6:58</p>
+        </div>
+
       </div>
     </>
   );

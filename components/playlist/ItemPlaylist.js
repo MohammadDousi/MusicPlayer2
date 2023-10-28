@@ -12,17 +12,24 @@ export default function ItemPlaylist({ track }) {
         track.map((track) => (
           <div
             key={track.id}
-            className="w-full h-16 px-2 py-3 hover:py-2 hover:px-3
+            className="w-full h-16 relative px-2 py-3 hover:py-2 hover:px-3
                       flex flex-row justify-between items-center gap-3
                       rounded-xl overflow-hidden cursor-pointer
-                      hover:bg-gradient-to-r hover:from-cyan-500/70 hover:to-purple-500/50
+                      
                       duration-300"
           >
             <img
               src={track.cover}
               alt={track.cover}
               onClick={() => dispatch(play(track))}
-              className="h-full object-cover rounded-lg shadow-lg"
+              className="w-full h-full absolute object-cover blur-3xl opacity-0 hover:opacity-60 rounded-lg shadow-lg"
+            />
+
+            <img
+              src={track.cover}
+              alt={track.cover}
+              onClick={() => dispatch(play(track))}
+              className="h-full object-cover shadow-xl rounded-lg shadow-lg"
             />
 
             <div

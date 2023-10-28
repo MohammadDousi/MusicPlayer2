@@ -22,10 +22,12 @@ export default function RootLayout({ children }) {
             <Header />
             {children}
           </main>
-          <div className="w-1/5 p-3 h-full bg-slate-950/50 overflow-hidden rounded-2xl">
+
+          <div className="w-1/5 p-3 h-full bg-slate-900 overflow-hidden rounded-2xl">
             <Playlist />
             <Player />
           </div>
+
         </ReduxProvider>
       </body>
     </html>

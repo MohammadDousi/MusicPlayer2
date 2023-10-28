@@ -17,11 +17,9 @@
   }
 } */
 
-:root {
-  .swiper {
-    @apply w-full;
-    padding: 0.2rem !important;
-  }
+.swiper {
+  width: 100%;
+  padding: 0.2rem !important;
 }
 
 @layer base {

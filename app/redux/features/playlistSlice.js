@@ -42,12 +42,12 @@ export const playlist = createSlice({
         const newList = state.list.filter((item) => item.id !== action.payload);
         return {
           ...state,
-          removeItem: "nooooo",
           list: newList,
         };
-        F;
       }
     },
+    prevant: (state, action) => {},
+
     playNext: (state) => {},
   },
 });

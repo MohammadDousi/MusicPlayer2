@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { pause } from "@/app/redux/features/playlistSlice";
+import { pause, play } from "@/app/redux/features/playlistSlice";
 
 export default function Player() {
   const [audio] = useState(new Audio());
-  const [onPlay, setOnPlay] = useState([]);
+  const [onPlay, setOnPlay] = useState({});
   let dispatch = useDispatch();
 
   const state = useSelector((state) => state.playlistSlice);
@@ -25,7 +25,7 @@ export default function Player() {
     }
   }, [onPlay, indexPlay]);
 
-  const playBtnClick = () => {
+  const playHandler = () => {
     !isPlaying ? loadSong(onPlay?.name) : puaseSong();
   };
 
@@ -48,9 +48,29 @@ export default function Player() {
     dispatch(pause());
   };
 
+  const parevantHandler = () => {
+    let newIndex = state.list.map((x) => x.id).indexOf(onPlay?.id);
+    newIndex--;
+    if (newIndex < 0) {
+      newIndex = state.list.length - 1;
+    }
+    let newTrack = state.list[newIndex];
+    dispatch(play(newTrack));
+  };
+
+  const forwardHandler = () => {
+    let newIndex = state.list.map((x) => x.id).indexOf(onPlay?.id);
+    newIndex++;
+    if (newIndex >= state.list.length) {
+      newIndex = 0;
+    }
+    let newTrack = state.list[newIndex];
+    dispatch(play(newTrack));
+  };
+
   return (
     <>
-      <div className="w-full h-1/2 py-3 px-6 flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl">
+      <div className="w-full h-3/5 py-3 px-6 flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl">
         <img
           src={onPlay?.cover}
           alt={onPlay?.cover}
@@ -62,16 +82,22 @@ export default function Player() {
         </div>
         <div className="w-full flex flex-row justify-between items-center">
           <i className="fa fa-repeat px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
-          <i className="fa fa-backward-step px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
+          <i
+            onClick={() => parevantHandler()}
+            className="fa fa-backward-step px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"
+          ></i>
           <i
             className={
               !isPlaying
                 ? "fa fa-circle-play px-2 text-white/70 hover:text-white text-3xl cursor-pointer duration-300"
                 : "fa fa-pause px-2 text-white/70 hover:text-white text-3xl cursor-pointer duration-300"
             }
-            onClick={() => playBtnClick()}
+            onClick={() => playHandler()}
           ></i>
-          <i className="fa fa-step-forward px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
+          <i
+            onClick={() => forwardHandler()}
+            className="fa fa-step-forward px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"
+          ></i>
           <i className="fa fa-shuffle px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
         </div>
         <div

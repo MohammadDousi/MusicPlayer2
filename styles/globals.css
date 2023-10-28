@@ -17,6 +17,13 @@
   }
 } */
 
+:root {
+  .swiper {
+    @apply w-full;
+    padding: 0.2rem !important;
+  }
+}
+
 @layer base {
   * {
     /* font-family: IRANSansXFaNum; */
@@ -42,5 +49,4 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-slate-500 rounded-xl;
   }
-  
 }

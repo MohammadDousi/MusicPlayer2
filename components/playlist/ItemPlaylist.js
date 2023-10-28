@@ -3,13 +3,13 @@
 import { play, removePlaylist } from "@/app/redux/features/playlistSlice";
 import { useDispatch } from "react-redux";
 
-export default function ItemPlaylist({ track, playHandler }) {
+export default function ItemPlaylist({ track }) {
   const dispatch = useDispatch();
 
   return (
     <div className="w-full h-auto overflow-auto">
       {track &&
-        track.map((track , index) => (
+        track.map((track) => (
           <div
             key={track.id}
             className="w-full h-16 px-2 py-3 hover:py-2 hover:px-3
@@ -29,7 +29,11 @@ export default function ItemPlaylist({ track, playHandler }) {
               onClick={() => dispatch(play(track))}
               className="w-3/4 h-full mt-1 flex flex-col flex-nowrap justify-center items-start"
             >
-              <p className="text-white/70 text-xs">{track.name}</p>
+              <p className="text-white/70 text-xs">
+                {track.name.length >= 23
+                  ? `${track.name.slice(0, 20)}...`
+                  : track.name}
+              </p>
               <p className="text-white/30 text-xs">{track.singer}</p>
             </div>
 

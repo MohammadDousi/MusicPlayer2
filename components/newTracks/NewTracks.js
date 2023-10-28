@@ -14,8 +14,6 @@ export default function NewTracks({ recentlySong }) {
   },[])
   
   
-  const selector = useSelector((state) => state.playlistSlice);
-
   return (
     <section className="w-full grid grid-cols-6 gap-5">
       {recentlySong &&
@@ -25,7 +23,7 @@ export default function NewTracks({ recentlySong }) {
             className="w-full flex flex-col justify-start items-start gap-4 cursor-pointer"
             onClick={() => {
               dispatch(addPlaylist(track));
-              dispatch(play(track));
+              // dispatch(play(track));
             }}
           >
             {/* <Link href={`/track/${track.id}`} className="w-full"> */}

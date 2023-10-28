@@ -12,6 +12,9 @@ export default function Player() {
   const state = useSelector((state) => state.playlistSlice);
   const isPlaying = state.play;
   let indexPlay = state.indexPlay;
+  let removeItem = state.removeItem;
+
+  console.log("remove item => " + removeItem && removeItem);
 
   useEffect(() => {
     if (indexPlay != null) {
@@ -31,7 +34,7 @@ export default function Player() {
     audio.load();
     playSong();
   };
-  
+
   const playSong = () => {
     // if (currentTime) {
     //   audio.currentTime = currentTime;

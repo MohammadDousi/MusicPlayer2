@@ -1,11 +1,13 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
+import { list } from "postcss";
 
 const initialState = {
   list: [],
   play: false,
   indexPlay: null,
+  removeItem: null,
 };
 
 export const playlist = createSlice({
@@ -14,17 +16,11 @@ export const playlist = createSlice({
 
   reducers: {
     play: (state, action) => {
-
-        return {
-          ...state,
-          play: true,
-          indexPlay: action.payload,
-        };
-
-      // return {
-      //   ...state,
-      //   play: true,
-      // };
+      return {
+        ...state,
+        play: true,
+        indexPlay: action.payload,
+      };
     },
     pause: (state) => {
       return {
@@ -41,7 +37,17 @@ export const playlist = createSlice({
         };
       }
     },
-    removePlaylist: (state) => {},
+    removePlaylist: (state, action) => {
+      if (state.indexPlay?.id != action.payload) {
+        const newList = state.list.filter((item) => item.id !== action.payload);
+        return {
+          ...state,
+          removeItem: "nooooo",
+          list: newList,
+        };
+        F;
+      }
+    },
     playNext: (state) => {},
   },
 });

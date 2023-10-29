@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import TitleContainer from "@/components/titleContainer/TitleContainer";
 import { notFound } from "next/navigation";
 
@@ -31,7 +33,7 @@ export default async function trackId({ params }) {
   // get data on server
   formData.append("fun", "getSingleSong");
   formData.append("id", params.trackId);
-  const data = await postData(
+  const track = await postData(
     "https://music.kaktusprog.ir/assets/php/function.php",
     formData
   );
@@ -43,32 +45,52 @@ export default async function trackId({ params }) {
   return (
     <>
       <section className="w-full space-y-10 overflow-auto">
-        {data == false && notFound()}
+        {track == false && notFound()}
 
         {/* image  and name container */}
 
-        {data && (
-          <section className="w-full h-64 relative flex flex-row overflow-hidden rounded-2xl bg-slate-800/50 shadow-xl">
-            <img
-              src={data?.cover}
-              alt={data?.cover}
-              className="w-full h-full z-0 absolute object-cover blur-xl opacity-20"
+        {track && (
+          <section className="w-full h-64 relative flex flex-row overflow-hidden rounded-2xl bg-gradient-to-r from-slate-800 to-slate-800 shadow-xl">
+            {/* <img
+              src={track?.cover}
+              alt={track?.cover}
+              className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
+            /> */}
+
+            <Image
+              src={track?.cover}
+              alt={track?.cover}
+              className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
+              width={500}
+              height={500}
+              quality={100}
             />
 
-            <section className="w-full h-full z-30 p-4 flex flex-row justify-start items-end gap-6 overflow-hidden">
-              <img
-                src={data?.cover}
-                alt={data?.cover}
+            <section className="w-full h-full z-30 p-6 flex flex-row justify-start items-end gap-6 overflow-hidden">
+              {/* <img
+                src={track?.cover}
+                alt={track?.cover}
                 className="h-full rounded-xl shadow-xl object-cover"
-              />
+              /> */}
+
+              <div className="w-1/5 h-full flex justify-center items-center">
+                <Image
+                  src={track?.cover}
+                  alt={track?.cover}
+                  className="rounded-xl shadow-xl object-cover"
+                  width={500}
+                  height={500}
+                  quality={100}
+                />
+              </div>
 
               <div className="flex flex-col justify-start items-start gap-4">
                 <p className="w-full text-white text-5xl font-black capitalize">
-                  {data?.name}
+                  {track?.name}
                 </p>
 
                 <p className="w-full text-white text-base font-normal capitalize tracking-wide">
-                  {`song by ${data?.singer} . ${data?.play} plays . ${data?.slike} Likes . ${data?.year}/${data?.month}/${data?.day} . 4:00 `}
+                  {`song by ${track?.singer} . ${track?.play} plays . ${track?.slike} Likes . ${track?.year}/${track?.month}/${track?.day} . 4:00 `}
                 </p>
               </div>
             </section>
@@ -90,10 +112,19 @@ export default async function trackId({ params }) {
             <div className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/30 hover:bg-slate-600 duration-300 rounded-xl">
               <div className="w-1/2 flex h-full flex-row justify-start items-center gap-4">
                 <img
-                  src={data?.cover}
-                  alt={data?.cover}
+                  src={track?.cover}
+                  alt={track?.cover}
                   className="h-full object-cover rounded-lg shadow-xl"
                 />
+
+                <Image
+              src={track?.cover}
+              alt={track?.cover}
+              className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
+              width={500}
+              height={500}
+              quality={100}
+            />
 
                 <div className="flex flex-row justify-center items-center gap-10 pl-4">
                   <i className="fa fa-play text-white cursor-pointer"></i>

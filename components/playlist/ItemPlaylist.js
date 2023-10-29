@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { play, removePlaylist } from "@/app/redux/features/playlistSlice";
 import { useDispatch } from "react-redux";
 
@@ -12,22 +13,27 @@ export default function ItemPlaylist({ track }) {
         track.map((track) => (
           <div
             key={track.id}
-            className="w-full h-16 relative px-2 py-3 hover:py-2 hover:px-3
+            className="w-full h-16 relative px-3 py-3
                       flex flex-row justify-between items-center gap-3
                       rounded-xl overflow-hidden cursor-pointer duration-300"
           >
-            <img
-              src={track.cover}
-              alt={track.cover}
+            <Image
+              src={track?.cover}
+              alt={track?.cover}
+              className="w-full h-full absolute object-cover blur-3xl opacity-0 hover:opacity-70 rounded-lg shadow-lg duration-300 z-0"
+              width={200}
+              height={200}
+              quality={100}
               onClick={() => dispatch(play(track))}
-              className="w-full h-full absolute object-cover blur-3xl opacity-0 hover:opacity-60 rounded-lg shadow-lg"
             />
 
-            <img
-              src={track.cover}
-              alt={track.cover}
-              onClick={() => dispatch(play(track))}
-              className="h-full object-cover shadow-xl rounded-lg shadow-lg"
+            <Image
+              src={track?.cover}
+              alt={track?.cover}
+              className="w-12 h-12 object-cover shadow-xl rounded-lg shadow-lg"
+              width={200}
+              height={200}
+              quality={100}
             />
 
             <div
@@ -43,7 +49,7 @@ export default function ItemPlaylist({ track }) {
             </div>
 
             {/*  btn clear and play item in playlist */}
-            <div className="flex flex-row justify-center items-center gap-3">
+            <div className="flex flex-row justify-center items-center gap-3 z-10">
               <i
                 onClick={() => {
                   dispatch(removePlaylist(track.id));

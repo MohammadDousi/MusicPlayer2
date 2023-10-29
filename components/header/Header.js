@@ -1,13 +1,20 @@
+import Image from "next/image";
+import profileCover from "../../public/u4.png";
+
 const Header = () => {
   return (
     <div className="w-full py-1 flex flex-row justify-between items-center gap-5">
       {/* profile */}
       <div className="w-4/12 flex flex-row justify-center items-center gap-6 overflow-hidden">
         <div className="w-full h-9 flex flex-row justify-start items-center gap-3 bg-gray-600/50 rounded-lg overflow-hidden">
-          <img
-            src="/u4.png"
-            alt="/profile2.png"
-            className="h-full shadow-xl rounded-lg object-cover"
+          
+          <Image
+            src={profileCover}
+            alt={profileCover}
+            className="w-9 h-9 shadow-xl rounded-lg object-cover"
+            width={50}
+            height={50}
+            quality={100}
           />
 
           <div className="w-full flex flex-row justify-between items-center pr-4">

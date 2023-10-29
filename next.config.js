@@ -1,22 +1,24 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {};
 // module.exports = nextConfig
 
 module.exports = {
-
-  // reactStrictMode: true,
+  reactStrictMode: true,
   // Enable the React DevTools profiler
   // profiler: true,
-  
-    async redirects() {
-      return [
-        {
-          source: '/track',
-          destination: '/',
-          permanent: false,
-          basePath: false
-        },
-      ]
-    },
 
-  };
+  images: {
+    domains: ["music.kaktusprog.ir"],
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/track",
+        destination: "/",
+        permanent: false,
+        basePath: false,
+      },
+    ];
+  },
+};

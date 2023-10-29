@@ -24,7 +24,6 @@
 
 @layer base {
   * {
-    /* font-family: IRANSansXFaNum; */
     line-height: unset;
     direction: ltr;
     @apply p-0 m-0 box-border outline-0 no-underline list-none border-0 border-transparent;

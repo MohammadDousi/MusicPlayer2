@@ -14,9 +14,7 @@ export default function ItemPlaylist({ track }) {
             key={track.id}
             className="w-full h-16 relative px-2 py-3 hover:py-2 hover:px-3
                       flex flex-row justify-between items-center gap-3
-                      rounded-xl overflow-hidden cursor-pointer
-                      
-                      duration-300"
+                      rounded-xl overflow-hidden cursor-pointer duration-300"
           >
             <img
               src={track.cover}

@@ -1,0 +1,13 @@
+
+
+.circleLoading {
+    @apply w-2 h-2 rounded-full bg-cyan-200 animate-animBounceCustom ;
+  }
+  
+  .circleLoading:nth-child(odd) {
+    animation-delay: 0.2s;
+  }
+  .circleLoading:nth-child(even) {
+    animation-delay: 0.4s;
+  }
+  

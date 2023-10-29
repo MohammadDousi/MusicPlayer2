@@ -6,8 +6,7 @@ import { list } from "postcss";
 const initialState = {
   list: [],
   play: false,
-  indexPlay: null,
-  removeItem: null,
+  trackPlay: null,
 };
 
 export const playlist = createSlice({
@@ -19,7 +18,7 @@ export const playlist = createSlice({
       return {
         ...state,
         play: true,
-        indexPlay: action.payload,
+        trackPlay: action.payload,
       };
     },
     pause: (state) => {
@@ -38,7 +37,7 @@ export const playlist = createSlice({
       }
     },
     removePlaylist: (state, action) => {
-      if (state.indexPlay?.id != action.payload) {
+      if (state.trackPlay?.id != action.payload) {
         const newList = state.list.filter((item) => item.id !== action.payload);
         return {
           ...state,
@@ -46,9 +45,6 @@ export const playlist = createSlice({
         };
       }
     },
-    prevant: (state, action) => {},
-
-    playNext: (state) => {},
   },
 });
 

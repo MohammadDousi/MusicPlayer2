@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "./all.css";
+@import "./loadingStyle.css";
 
 /* :root {
   --foreground-rgb: 0, 0, 0;
@@ -18,8 +19,7 @@
 } */
 
 .swiper {
-  width: 100%;
-  padding: 0.2rem !important;
+  @apply w-full;
 }
 
 @layer base {

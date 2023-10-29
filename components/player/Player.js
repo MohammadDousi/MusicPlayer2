@@ -6,26 +6,31 @@ import { pause, play } from "@/app/redux/features/playlistSlice";
 
 export default function Player() {
   const [audio] = useState(new Audio());
-  const [onPlay, setOnPlay] = useState({});
+  const [track, setTrack] = useState({});
   let dispatch = useDispatch();
 
   const state = useSelector((state) => state.playlistSlice);
+  let trackPlay = state.trackPlay;
+  const defaultTrack = state.list && state.list[state.list.length - 1];
+
   const [isPlaying, setIsPlaying] = useState(false);
-  let indexPlay = state.indexPlay;
+
+  useEffect(() => {
+    setTrack(defaultTrack);
+  }, [defaultTrack]);
 
   useEffect(() => {
     setIsPlaying(state.play);
-    if (indexPlay != null) {
-      setOnPlay(indexPlay);
-      loadSong(indexPlay.name);
-    } else {
-      setOnPlay(state.list && state.list[state.list.length - 1]);
+    if (trackPlay) {
+      console.log("bye");
+      setTrack(trackPlay);
+      loadSong(trackPlay.name);
     }
-  }, [onPlay, indexPlay]);
+  }, [trackPlay]);
 
   const playHandler = () => {
     if (!isPlaying) {
-      loadSong(onPlay?.name);
+      loadSong(track?.name);
       setIsPlaying(true);
     } else {
       puaseSong();
@@ -53,7 +58,7 @@ export default function Player() {
   };
 
   const parevantHandler = () => {
-    let newIndex = state.list.map((x) => x.id).indexOf(onPlay?.id);
+    let newIndex = state.list.map((x) => x.id).indexOf(track?.id);
     newIndex--;
     if (newIndex < 0) {
       newIndex = state.list.length - 1;
@@ -63,7 +68,7 @@ export default function Player() {
   };
 
   const forwardHandler = () => {
-    let newIndex = state.list.map((x) => x.id).indexOf(onPlay?.id);
+    let newIndex = state.list.map((x) => x.id).indexOf(track?.id);
     newIndex++;
     if (newIndex >= state.list.length) {
       newIndex = 0;
@@ -77,19 +82,19 @@ export default function Player() {
       {audio?.addEventListener("ended", forwardHandler)}
       <div className="w-full relative h-3/5 py-3 px-6 flex flex-col justify-around items-center bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl overflow-hidden">
         <img
-          src={onPlay?.cover}
-          alt={onPlay?.cover}
+          src={track?.cover}
+          alt={track?.cover}
           className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
         />
 
         <div className="w-full flex flex-col justify-center items-center z-10">
           <img
-            src={onPlay?.cover}
-            alt={onPlay?.cover}
+            src={track?.cover}
+            alt={track?.cover}
             className="w-full mb-3 rounded-3xl shadow-2xl object-cover z-10"
           />
-          <p className="text-white/70 text-base">{onPlay?.name}</p>
-          <p className="text-white/30 text-sm">{onPlay?.singer}</p>
+          <p className="text-white/70 text-base">{track?.name}</p>
+          <p className="text-white/30 text-sm">{track?.singer}</p>
         </div>
         <div className="w-full flex flex-row justify-between items-center z-10">
           <i className="fa fa-repeat px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
@@ -112,9 +117,9 @@ export default function Player() {
           <i className="fa fa-shuffle px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
         </div>
         <div
-          className="w-full h-1 relative rounded-full bg-cyan-800/80 flex flex-row flex-nowrap justify-start items-center cursor-pointer progrees-time-onplay"
+          className="w-full h-1 relative rounded-full bg-cyan-800/80 flex flex-row flex-nowrap justify-start items-center cursor-pointer progrees-time-track"
           //   onClick={setProgresse}
-          //   ref={widthProgreesTimeOnplay}
+          //   ref={widthProgreesTimetrack}
         >
           <span
             // style={{ width: `${widthProgreesTimePlay}%` }}
@@ -126,13 +131,11 @@ export default function Player() {
             id="badge-time"
             // style={{ transform: `translateX(${badge}px)` }}
           ></span>
-
         </div>
         <div className="w-full flex flex-row justify-between items-center">
           <p className="text-xs text-white/70">6:58</p>
           <p className="text-xs text-white/70">6:58</p>
         </div>
-
       </div>
     </>
   );

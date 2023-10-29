@@ -3,6 +3,7 @@ import TitleContainer from "@/components/titleContainer/TitleContainer";
 import Link from "next/link";
 
 import NewTracks from "@/components/newTracks/NewTracks";
+import Loading from "./loading";
 
 let formData = new FormData();
 
@@ -18,18 +19,6 @@ export default async function Home() {
     "https://music.kaktusprog.ir/assets/php/function.php",
     formData
   );
-
-  // for (let [key, value] of formData) {
-  //   formData.delete(key, value);
-  // }
-
-  {
-    /* {recentlySong.map((item) => (
-                      <h2 className="text-white text-4xl w-full text-center">
-                        {item.name}
-                      </h2>
-                    ))} */
-  }
 
   return (
     <>
@@ -133,11 +122,11 @@ export default async function Home() {
 
             <div className="w-full flex flex-col justify-center items-start gap-4">
               {recentlySong.map((song) => (
-                <div key={song.id} className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/50 hover:bg-slate-600/50 duration-300 rounded-xl">
-                  <Link
-                    href={`/track/${song.id}`}
-                    className="h-full"
-                  >
+                <div
+                  key={song.id}
+                  className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/50 hover:bg-slate-600/50 duration-300 rounded-xl"
+                >
+                  <Link href={`/track/${song.id}`} className="h-full">
                     <img
                       src={song.cover}
                       alt={song.cover}

@@ -6,8 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { addPlaylist, play } from "@/app/redux/features/playlistSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 export default function NewTracks({ recentlySong }) {
   const dispatch = useDispatch();

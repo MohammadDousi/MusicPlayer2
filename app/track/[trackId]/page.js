@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import TitleContainer from "@/components/titleContainer/TitleContainer";
 import { notFound } from "next/navigation";
+import PlayInTrackId from "@/components/playInTrackId/PlayInTrackId";
 
 let formData = new FormData();
 
@@ -44,19 +45,13 @@ export default async function trackId({ params }) {
 
   return (
     <>
-      <section className="w-full space-y-10 overflow-auto">
+      <section className="w-full pt-3 space-y-10 overflow-auto">
         {track == false && notFound()}
 
         {/* image  and name container */}
 
         {track && (
           <section className="w-full h-64 relative flex flex-row overflow-hidden rounded-2xl bg-gradient-to-r from-slate-800 to-slate-800 shadow-xl">
-            {/* <img
-              src={track?.cover}
-              alt={track?.cover}
-              className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
-            /> */}
-
             <Image
               src={track?.cover}
               alt={track?.cover}
@@ -67,12 +62,6 @@ export default async function trackId({ params }) {
             />
 
             <section className="w-full h-full z-30 p-6 flex flex-row justify-start items-end gap-6 overflow-hidden">
-              {/* <img
-                src={track?.cover}
-                alt={track?.cover}
-                className="h-full rounded-xl shadow-xl object-cover"
-              /> */}
-
               <div className="w-1/5 h-full flex justify-center items-center">
                 <Image
                   src={track?.cover}
@@ -98,12 +87,7 @@ export default async function trackId({ params }) {
         )}
 
         {/* play, share, download, like button container */}
-        <section className="w-full flex flex-row justify-center items-center gap-4">
-          <i className="fa fa-play-circle text-6xl text-white hover:animate-pulse duration-300 cursor-pointer"></i>
-          <i className="fa fa-heart w-9 h-9 text-sm text-white hover:text-cyan-600 bg-white/20 hover:bg-white duration-300 shadow-xl rounded-full flex justify-center items-center cursor-pointer"></i>
-          <i className="fa fa-download w-9 h-9 text-sm  text-white hover:text-cyan-600 bg-white/20 hover:bg-white duration-300 shadow-xl rounded-full flex justify-center items-center cursor-pointer"></i>
-          <i className="fa fa-share-alt w-9 h-9 text-sm  text-white hover:text-cyan-600 bg-white/20 hover:bg-white duration-300 shadow-xl rounded-full flex justify-center items-center cursor-pointer"></i>
-        </section>
+        <PlayInTrackId track={track} />
 
         <div className="w-full flex flex-col justify-start items-start gap-5 rounded-2xl">
           <TitleContainer title="more songs" href="" />

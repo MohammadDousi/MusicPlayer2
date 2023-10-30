@@ -8,7 +8,7 @@ export default function TitleContainer({ title, href }) {
       {href && (
         <Link
           href={`/${href}`}
-          className="text-white/40 text-xs capitalize rounded-full cursor-pointer duration-300 hover:text-cyan-500"
+          className="text-white/40 text-sm capitalize rounded-full cursor-pointer duration-300 hover:text-cyan-500"
         >
           see all
         </Link>

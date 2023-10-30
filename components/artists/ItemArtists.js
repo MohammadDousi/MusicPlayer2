@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import cover from "@/public/image/coverSongs/cover.jpg";
-
 export default function Artists(props) {
   const { data } = props;
   return (

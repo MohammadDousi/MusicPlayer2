@@ -15,18 +15,19 @@ export default function NewTracks({ recentlySong }) {
 
   const dispatch = useDispatch();
   
-  dispatch(addPlaylist(recentlySong && recentlySong[0]));
-  // useEffect(() => {
-  // }, []);
+  useEffect(() => {
+    dispatch(addPlaylist(recentlySong && recentlySong[0]));
+  }, []);
 
   // w-full h-4/5 absolute -translate-y-4 hover:-translate-y-6 opacity-0 hover:opacity-100 duration-300 z-0
   return (
-    <Swiper spaceBetween={25} slidesPerView={5.8}>
+    <Swiper spaceBetween={20} slidesPerView={5.8}>
       {recentlySong &&
         recentlySong.map((track) => (
-          <SwiperSlide key={track.id}>
-            <div className="w-full relative flex flex-col justify-start items-start gap-4 rounded-xl cursor-pointer overflow-hidden">
-              <div className="w-full h-full  absolute opacity-0 hover:opacity-100 duration-300">
+          <SwiperSlide key={track?.id}>
+            <div className="w-full relative flex flex-col justify-start items-start gap-4 cursor-pointer overflow-hidden">
+            
+              <div className="w-full h-full absolute opacity-0 hover:opacity-100 duration-300">
                 <div
                   onClick={() => {
                     dispatch(addPlaylist(track));
@@ -38,13 +39,13 @@ export default function NewTracks({ recentlySong }) {
                 </div>
 
                 <Link href={`/track/${track.id}`}>
-                  <div className="w-full h-full absolute "></div>
+                  <div className="w-full h-full absolute"></div>
                 </Link>
               </div>
 
               <Image
-                src={track.cover}
-                alt={track.cover}
+                src={track?.cover}
+                alt={track?.cover}
                 className="w-full h-full object-cover rounded-2xl shadow-lg"
                 width={500}
                 height={500}
@@ -53,12 +54,12 @@ export default function NewTracks({ recentlySong }) {
 
               <section className="w-full">
                 <Link
-                  href={`/track/${track.id}`}
+                  href={`/track/${track?.id}`}
                   className="w-full text-white/70 hover:text-white text-sm font-bold tracking-wide duration-300 cursor-pointerF"
                 >
-                  {track.name.length >= 23
-                    ? `${track.name.slice(0, 20)}...`
-                    : track.name}
+                  {track?.name.length >= 23
+                    ? `${track?.name.slice(0, 20)}...`
+                    : track?.name}
                 </Link>
 
                 <p className="w-full text-white/40 text-sm font-normal">

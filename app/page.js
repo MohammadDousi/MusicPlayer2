@@ -23,7 +23,7 @@ export default async function Home() {
 
   return (
     <>
-      <section className="w-full flex flex-col justify-start items-center gap-10 overflow-auto">
+      <section className="w-full pt-3 flex flex-col justify-start items-center gap-10 overflow-auto">
         {/* favorite artists */}
         <section className="w-full flex flex-col justify-start items-start gap-3">
           <TitleContainer title="favorite artists" href="artists" />

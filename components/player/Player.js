@@ -32,7 +32,7 @@ export default function Player() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    setTrack(defaultTrack);
+    !trackPlay && setTrack(defaultTrack);
   }, [defaultTrack]);
 
   useEffect(() => {
@@ -148,12 +148,6 @@ export default function Player() {
     <>
       {audio?.addEventListener("ended", forwardHandler)}
       <div className="w-full relative h-3/5 py-3 px-6 flex flex-col justify-around items-center bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl overflow-hidden">
-        {/* <img
-          src={track?.cover}
-          alt={track?.cover}
-          className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
-        /> */}
-
         <Image
           src={track?.cover}
           alt={track?.cover}
@@ -164,12 +158,6 @@ export default function Player() {
         />
 
         <div className="w-full flex flex-col justify-center items-center z-10">
-          {/* <img
-            src={track?.cover}
-            alt={track?.cover}
-            className="w-full mb-3 rounded-3xl shadow-2xl object-cover z-10"
-          /> */}
-
           <Image
             src={track?.cover}
             alt={track?.cover}
@@ -183,24 +171,24 @@ export default function Player() {
           <p className="text-white/30 text-sm">{track?.singer}</p>
         </div>
         <div className="w-full flex flex-row justify-between items-center z-10">
-          <i className="fa fa-repeat px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
+          <i className="fa fa-repeat px-2 text-white hover:text-yellow-500 text-sm cursor-pointer duration-300"></i>
           <i
             onClick={() => backwardHandler()}
-            className="fa fa-backward-step px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"
+            className="fa fa-backward-step px-2 text-white hover:text-yellow-500 text-sm cursor-pointer duration-300"
           ></i>
           <i
             className={
               !isPlaying
-                ? "fa fa-circle-play px-2 text-white/70 hover:text-white text-4xl cursor-pointer duration-300"
-                : "fa fa-pause px-2 text-white/70 hover:text-white text-4xl cursor-pointer duration-300"
+                ? "fa fa-circle-play px-2 text-white hover:text-yellow-500 text-4xl cursor-pointer duration-300"
+                : "fa fa-pause px-2 text-white hover:text-yellow-500 text-4xl cursor-pointer duration-300"
             }
             onClick={() => playHandler()}
           ></i>
           <i
             onClick={() => forwardHandler()}
-            className="fa fa-step-forward px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"
+            className="fa fa-step-forward px-2 text-white hover:text-yellow-500 text-sm cursor-pointer duration-300"
           ></i>
-          <i className="fa fa-shuffle px-2 text-white/70 hover:text-white text-sm cursor-pointer duration-300"></i>
+          <i className="fa fa-shuffle px-2 text-white hover:text-yellow-500 text-sm cursor-pointer duration-300"></i>
         </div>
         <div
           className="w-full h-1 relative rounded-full bg-white/50 flex flex-row flex-nowrap justify-start items-center cursor-pointer progrees-time-track"
@@ -213,8 +201,7 @@ export default function Player() {
           ></span>
 
           <span
-            className="w-3 h-3 rounded-full absolute cursor-pointer bg-white z-20 duration-300"
-            // id="badge-time"
+            className="w-3 h-3 rounded-full absolute cursor-pointer bg-yellow-500 z-20 duration-300"
             style={{ transform: `translateX(${badge}px)` }}
           ></span>
         </div>

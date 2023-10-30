@@ -32,7 +32,7 @@
   body {
     @apply w-screen h-screen p-3
     flex flex-row justify-center items-start gap-2 overflow-x-hidden
-    bg-gradient-to-tr from-slate-700 to-slate-900;
+    bg-gradient-to-tr from-slate-700 to-slate-800;
   }
 
   ::-webkit-scrollbar {

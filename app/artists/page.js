@@ -10,6 +10,10 @@ export default async function AllArtists() {
     formData
   );
 
+  const popArtists = artists.filter((item) => item.geners === "pop");
+  const rapArtists = artists.filter((item) => item.geners === "rap");
+  const rockArtists = artists.filter((item) => item.geners === "rock");
+
   for (let [key, value] of formData) {
     formData.delete(key, value);
   }
@@ -18,15 +22,37 @@ export default async function AllArtists() {
     <>
       {artists == false && notFound()}
 
-      {artists && (
-        <section className="w-full flex flex-col justify-start items-start gap-3">
-          <TitleContainer title="All Artists" href="" />
-          
-          <section className="w-full grid grid-cols-8 gap-5 overflow-auto">
-            <ItemArtists data={artists} />
+      <section className="w-full pt-3 flex flex-col justify-start items-center gap-10 overflow-auto">
+        {artists && (
+          <section className="w-full flex flex-col justify-start items-start gap-3">
+            <TitleContainer title="Pop Artists" href="" />
+
+            <section className="w-full grid grid-cols-8 gap-5 overflow-auto">
+              <ItemArtists data={popArtists} />
+            </section>
           </section>
-        </section>
-      )}
+        )}
+
+        {artists && (
+          <section className="w-full flex flex-col justify-start items-start gap-3">
+            <TitleContainer title="Rap Artists" href="" />
+
+            <section className="w-full grid grid-cols-8 gap-5 overflow-auto">
+              <ItemArtists data={rapArtists} />
+            </section>
+          </section>
+        )}
+
+        {artists && (
+          <section className="w-full flex flex-col justify-start items-start gap-3">
+            <TitleContainer title="Rap Artists" href="" />
+
+            <section className="w-full grid grid-cols-8 gap-5 overflow-auto">
+              <ItemArtists data={rockArtists} />
+            </section>
+          </section>
+        )}
+      </section>
     </>
   );
 }

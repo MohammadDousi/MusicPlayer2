@@ -39,6 +39,12 @@ export default async function trackId({ params }) {
     formData
   );
 
+  formData.append("fun", "getRecentlySongs");
+  const recentlyTrack = await postData(
+    "https://music.kaktusprog.ir/assets/php/function.php",
+    formData
+  );
+
   for (let [key, value] of formData) {
     formData.delete(key, value);
   }
@@ -74,7 +80,7 @@ export default async function trackId({ params }) {
               </div>
 
               <div className="flex flex-col justify-start items-start gap-4">
-                <p className="w-full text-white text-5xl font-black capitalize">
+                <p className="w-full text-white text-5xl font-bold capitalize">
                   {track?.name}
                 </p>
 
@@ -92,41 +98,41 @@ export default async function trackId({ params }) {
         <div className="w-full flex flex-col justify-start items-start gap-5 rounded-2xl">
           <TitleContainer title="more songs" href="" />
 
-          {/* <div className="w-full h-auto flex flex-col justify-center items-start gap-4">
-            <div className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/30 hover:bg-slate-600 duration-300 rounded-xl">
-              <div className="w-1/2 flex h-full flex-row justify-start items-center gap-4">
-                <img
-                  src={track?.cover}
-                  alt={track?.cover}
-                  className="h-full object-cover rounded-lg shadow-xl"
-                />
+          <div className="w-full h-auto flex flex-col justify-center items-start gap-4">
+            {recentlyTrack &&
+              recentlyTrack.map((track) => (
+                <div key={track.id} className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/30 hover:bg-slate-600 duration-300 rounded-xl">
+                  <>
+                    <div className="flex h-full flex-row justify-start items-center gap-4">
+                     
+                      <Image
+                        src={track?.cover}
+                        alt={track?.cover}
+                        className="w-14 h-14 object-cover rounded-lg shadow-xl"
+                        width={500}
+                        height={500}
+                        quality={100}
+                      />
 
-                <Image
-              src={track?.cover}
-              alt={track?.cover}
-              className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
-              width={500}
-              height={500}
-              quality={100}
-            />
+                      <div className="flex flex-row justify-center items-center gap-10 pl-4">
+                        <i className="fa fa-play text-white cursor-pointer"></i>
+                        <p className="text-white/70 text-sm font-bold tracking-wider">
+                          Tulsa Jesus Freak
+                        </p>
+                        <p className="text-white/40 text-sm tracking-wide">
+                          Lana del Ray
+                        </p>
+                      </div>
+                    </div>
 
-                <div className="flex flex-row justify-center items-center gap-10 pl-4">
-                  <i className="fa fa-play text-white cursor-pointer"></i>
-                  <p className="text-white/70 text-sm font-bold tracking-wider">
-                    Tulsa Jesus Freak
-                  </p>
-                  <p className="text-white/40 text-sm tracking-wide">
-                    Lana del Ray
-                  </p>
+                    <div className="flex flex-row justify-center items-center gap-8 pr-4">
+                      <p className="text-sm text-white/40">4:35</p>
+                      <i className="fa fa-ellipsis-h text-lg text-white cursor-pointer duration-300 hover:text-cyan-500"></i>
+                    </div>
+                  </>
                 </div>
-              </div>
-              <div className="flex flex-row justify-center items-center gap-8 pr-4">
-                <p className="text-sm text-white/40">4:35</p>
-                <i className="fa fa-ellipsis-h text-lg text-white cursor-pointer duration-300 hover:text-cyan-500"></i>
-              </div>
-            </div>
-
-          </div> */}
+              ))}
+          </div>
         </div>
       </section>
     </>

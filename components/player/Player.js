@@ -167,8 +167,8 @@ export default function Player() {
             quality={100}
           />
 
-          <p className="text-white/70 text-base">{track?.name}</p>
-          <p className="text-white/30 text-sm">{track?.singer}</p>
+          <p className="text-white/70 text-base capitalize">{track?.name}</p>
+          <p className="text-white/30 text-sm capitalize">{track?.singer}</p>
         </div>
         <div className="w-full flex flex-row justify-between items-center z-10">
           <i className="fa fa-repeat px-2 text-white hover:text-yellow-500 text-sm cursor-pointer duration-300"></i>

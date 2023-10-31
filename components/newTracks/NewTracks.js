@@ -11,19 +11,19 @@ import { addPlaylist, play } from "@/app/redux/features/playlistSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-export default function NewTracks({ recentlySong }) {
+export default function NewTracks({ recentlyTrack }) {
 
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch(addPlaylist(recentlySong && recentlySong[0]));
+    dispatch(addPlaylist(recentlyTrack && recentlyTrack[0]));
   }, []);
 
   // w-full h-4/5 absolute -translate-y-4 hover:-translate-y-6 opacity-0 hover:opacity-100 duration-300 z-0
   return (
     <Swiper spaceBetween={20} slidesPerView={5.8}>
-      {recentlySong &&
-        recentlySong.map((track) => (
+      {recentlyTrack &&
+        recentlyTrack.map((track) => (
           <SwiperSlide key={track?.id}>
             <div className="w-full relative flex flex-col justify-start items-start gap-4 cursor-pointer overflow-hidden">
             

@@ -45,7 +45,7 @@ export default async function AllArtists() {
 
         {artists && (
           <section className="w-full flex flex-col justify-start items-start gap-3">
-            <TitleContainer title="Rap Artists" href="" />
+            <TitleContainer title="Rock Artists" href="" />
 
             <section className="w-full grid grid-cols-8 gap-5 overflow-auto">
               <ItemArtists data={rockArtists} />

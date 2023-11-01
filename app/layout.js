@@ -20,12 +20,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={defaultFont.className}>
         <ReduxProvider>
-          <main className="w-4/5 h-full px-3 flex flex-col justify-start items-center gap-4 overflow-x-hidden z-10">
+          <main className="w-full md:w-4/5 h-full md:px-3 flex flex-col justify-start items-center gap-4 overflow-x-hidden">
             <Header />
             {children}
           </main>
 
-          <div className="w-1/5 p-3 h-full bg-slate-900 overflow-hidden rounded-2xl z-10">
+          <div className="hidden w-full md:w-1/5 h-full p-3 absolute flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-10">
             <Playlist />
             <Player />
           </div>

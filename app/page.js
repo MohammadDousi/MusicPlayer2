@@ -23,14 +23,15 @@ export default async function Home() {
 
   return (
     <>
-      <section className="w-full pt-3 flex flex-col justify-start items-center gap-10 overflow-auto">
+      <section className="w-full pt-3 flex flex-col justify-start items-center gap-10 overflow-x-hidden">
         {/* favorite artists */}
         <section className="w-full flex flex-col justify-start items-start gap-3">
           <TitleContainer title="favorite artists" href="artists" />
 
-          <section className="w-full grid grid-cols-8 gap-5 overflow-auto">
+          <section className="w-full px-3 flex flex-row justify-start items-start gap-4 overflow-auto">
             <ItemArtists data={artists} />
           </section>
+          
         </section>
 
         {/* new track */}
@@ -38,7 +39,7 @@ export default async function Home() {
         <section className="w-full flex flex-col justify-start items-start gap-3">
           <TitleContainer title="new track" href="" />
 
-          <NewTracks recentlyTrack={recentlyTrack} />
+          {/* <NewTracks recentlyTrack={recentlyTrack} /> */}
         </section>
 
         {/* recommended for you */}

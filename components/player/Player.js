@@ -147,7 +147,7 @@ export default function Player() {
   return (
     <>
       {audio?.addEventListener("ended", forwardHandler)}
-      <div className="w-full relative h-3/5 py-3 px-6 flex flex-col justify-around items-center bg-gradient-to-r from-slate-800 to-slate-800 rounded-2xl overflow-hidden">
+      <div className="w-full h-2/5 md:h-3/5 relative py-3 px-6 flex flex-col justify-around items-center bg-slate-800 rounded-2xl overflow-hidden">
         <Image
           src={track?.cover}
           alt={track?.cover}
@@ -157,19 +157,22 @@ export default function Player() {
           quality={100}
         />
 
-        <div className="w-full flex flex-col justify-center items-center z-10">
+        <div className="w-full flex flex-row justify-start items-start gap-3 md:flex-col md:justify-center items-center z-10">
           <Image
             src={track?.cover}
             alt={track?.cover}
-            className="w-full mb-3 rounded-3xl shadow-2xl object-cover z-10"
+            className="w-16 rounded-xl md:w-full md:mb-3 md:rounded-3xl shadow-2xl object-cover z-10"
             width={500}
             height={500}
             quality={100}
           />
 
-          <p className="text-white/70 text-base capitalize">{track?.name}</p>
-          <p className="text-white/30 text-sm capitalize">{track?.singer}</p>
+          <div className="w-full flex flex-col justify-center items-start">
+            <p className="text-white/70 text-base capitalize">{track?.name}</p>
+            <p className="text-white/30 text-sm capitalize">{track?.singer}</p>
+          </div>
         </div>
+
         <div className="w-full flex flex-row justify-between items-center z-10">
           <i className="fa fa-repeat px-2 text-white hover:text-yellow-500 text-sm cursor-pointer duration-300"></i>
           <i
@@ -190,6 +193,7 @@ export default function Player() {
           ></i>
           <i className="fa fa-shuffle px-2 text-white hover:text-yellow-500 text-sm cursor-pointer duration-300"></i>
         </div>
+
         <div
           className="w-full h-1 relative rounded-full bg-white/50 flex flex-row flex-nowrap justify-start items-center cursor-pointer progrees-time-track"
           onClick={setProgresse}

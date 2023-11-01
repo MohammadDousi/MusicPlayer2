@@ -3,7 +3,7 @@ import profileCover from "../../public/u4.png";
 
 const Header = () => {
   return (
-    <div className="w-full py-1 flex flex-row justify-between items-center gap-5">
+    <div className="w-full px-3 pt-3 md:px-0 md:py-1 flex flex-row justify-between items-center gap-5">
       {/* profile */}
       <div className="w-4/12 flex flex-row justify-center items-center gap-6 overflow-hidden">
         <div className="w-full h-9 flex flex-row justify-start items-center gap-3 bg-gray-600/50 rounded-lg overflow-hidden">
@@ -24,6 +24,7 @@ const Header = () => {
 
             <i className="fa fa-angle-down text-sm text-gray-400"></i>
           </div>
+
         </div>
         <i className="fa fa-bell text-gray-400"></i>
       </div>

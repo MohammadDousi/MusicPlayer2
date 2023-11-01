@@ -12,21 +12,45 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 export default function NewTracks({ recentlyTrack }) {
-
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(addPlaylist(recentlyTrack && recentlyTrack[0]));
   }, []);
 
-  // w-full h-4/5 absolute -translate-y-4 hover:-translate-y-6 opacity-0 hover:opacity-100 duration-300 z-0
   return (
-    <Swiper spaceBetween={20} slidesPerView={5.8}>
+    <Swiper
+      spaceBetween={20}
+      slidesPerView={5.8}
+      // breakpoints={
+      //   {
+      //     640: {
+      //       width: 640,
+      //       slidesPerView: 3,
+      //     },
+      //     768: {
+      //       width: 768,
+      //       slidesPerView: 4,
+      //     },
+      //     1024: {
+      //       width: 1024,
+      //       slidesPerView: 4,
+      //     },
+      //     1280: {
+      //       width: 1280,
+      //       slidesPerView: 5,
+      //     },
+      //     1536: {
+      //       width: 1536,
+      //       slidesPerView: 5,
+      //     },
+      //   }
+      // }
+    >
       {recentlyTrack &&
         recentlyTrack.map((track) => (
           <SwiperSlide key={track?.id}>
             <div className="w-full relative flex flex-col justify-start items-start gap-4 cursor-pointer overflow-hidden">
-            
               <div className="w-full h-full absolute opacity-0 hover:opacity-100 duration-300">
                 <div
                   onClick={() => {
@@ -46,7 +70,7 @@ export default function NewTracks({ recentlyTrack }) {
               <Image
                 src={track?.cover}
                 alt={track?.cover}
-                className="w-full h-full object-cover rounded-2xl shadow-lg"
+                className="w-full h-full object-cover rounded-xl shadow-lg"
                 width={500}
                 height={500}
                 quality={100}

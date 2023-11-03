@@ -39,7 +39,7 @@ export default async function Home() {
         <section className="w-full flex flex-col justify-start items-start gap-3">
           <TitleContainer title="new track" href="" />
 
-          {/* <NewTracks recentlyTrack={recentlyTrack} /> */}
+          <NewTracks recentlyTrack={recentlyTrack} />
         </section>
 
         {/* recommended for you */}

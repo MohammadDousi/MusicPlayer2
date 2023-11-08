@@ -18,9 +18,9 @@
   }
 } */
 
-.swiper {
+/* .swiper {
   @apply w-full;
-}
+} */
 
 @layer base {
   * {

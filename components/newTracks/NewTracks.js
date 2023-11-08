@@ -11,17 +11,19 @@ import { useEffect } from "react";
 
 export default function NewTracks({ recentlyTrack }) {
   const dispatch = useDispatch();
-  let lengthName , cutLength;
-  window.innerWidth <= 425 ? (lengthName = 18) : (cutLength = 23);
-  window.innerWidth <= 425 ? (cutLength = 15) : (cutLength = 20);
+  let lengthName = 23, cutLength = 20;
+
+  // window.innerWidth <= 425 ? (lengthName = 18) : (cutLength = 23);
+  // window.innerWidth <= 425 ? (cutLength = 15) : (cutLength = 20);
 
   useEffect(() => {
     dispatch(addPlaylist(recentlyTrack && recentlyTrack[0]));
   }, []);
 
+
   return (
     <Swiper
-      className="!px-3 md:p-0"
+      className="!w-full !px-3 md:p-0"
       spaceBetween={20}
       slidesPerView={5.8}
       breakpoints={{

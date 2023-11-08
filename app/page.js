@@ -31,7 +31,6 @@ export default async function Home() {
           <section className="w-full px-3 flex flex-row justify-start items-start gap-4 overflow-auto">
             <ItemArtists data={artists} />
           </section>
-          
         </section>
 
         {/* new track */}
@@ -67,31 +66,26 @@ export default async function Home() {
 
         {/* Recently play */}
 
-        <section className="w-full flex flex-row justify-start items-start gap-5">
-        
-          <div className="w-1/2 p-5 bg-slate-700/50 rounded-2xl">
-           
+        <section className="w-full p-3 md:p-0 flex flex-col md:flex-row justify-start items-start gap-5">
+          <div className="w-full md:w-1/2 p-3 md:p-5 bg-slate-700/50 rounded-2xl">
             <div className="w-full pb-6 flex flex-row justify-between items-center">
               <h1 className="text-white/70 text-2xl font-bold capitalize">
                 New Track
               </h1>
 
-              <h1 className="text-white/40 text-sm capitalize rounded-full cursor-pointer duration-300 hover:text-cyan-500">
+              <h1 className="text-white/40 mt-2 text-sm capitalize rounded-full cursor-pointer duration-300 hover:text-cyan-500">
                 see all
               </h1>
             </div>
 
             <div className="w-full flex flex-col justify-center items-start gap-4">
               {recentlyTrack.map((track) => (
-              
-              <div
+                <div
                   key={track?.id}
-                  className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/50 hover:bg-slate-600/50 duration-300 rounded-xl pr-5"
+                  className="w-full h-14 flex flex-row justify-between items-center bg-slate-700/50 hover:bg-slate-600/50 duration-300 rounded-xl pr-3"
                 >
-                 
-                  <div className="flex flex-row justify-start items-center gap-5">
-              
-                  <Link href={`/track/${track?.id}`} className="w-auto">
+                  <div className="flex flex-row justify-start items-center gap-3 md:gap-5">
+                    <Link href={`/track/${track?.id}`} className="w-auto">
                       <Image
                         src={track?.cover}
                         alt={track?.cover}
@@ -103,32 +97,36 @@ export default async function Home() {
                     </Link>
 
                     <div className="flex flex-row justify-center items-center gap-5">
-                      <i className="fa fa-play text-white cursor-pointer"></i>
-                      <p className="text-white/70 text-sm font-bold tracking-wider">
-                        <Link key={track?.id} href={`/track/${track?.id}`}>
-                          {track?.name}
-                        </Link>
-                      </p>
-                      <p className="text-white/40 text-sm tracking-wide">
-                        {track?.singer}
-                      </p>
-                    </div>
+                      <i className="fa fa-play hidden md:block text-white cursor-pointer"></i>
 
+                      <div className="w-full flex flex-col md:flex-row justify-start items-start">
+                        <p className="text-white/70 text-sm font-bold tracking-wider">
+                          <Link key={track?.id} href={`/track/${track?.id}`}>
+                            {track?.name.length >= 23
+                              ? `${track?.name.slice(0, 20)}...`
+                              : track?.name}
+                          </Link>
+                        </p>
+                        <p className="text-white/40 text-sm tracking-wide">
+                          {track?.singer}
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   {/*  btn more and time song */}
                   <div className="flex flex-row justify-start items-center gap-5">
-                   
-                    <p className="text-sm text-white/40">4:35</p>
+                    <p className="hidden md:block text-sm text-white/40">
+                      4:35
+                    </p>
                     <i className="fa fa-ellipsis-h text-lg text-white cursor-pointer duration-300 hover:text-cyan-500"></i>
-                
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="w-1/2 p-5 bg-slate-950/50 rounded-2xl">
+          <div className="w-full md:w-1/2 p-5 bg-slate-950/50 rounded-2xl">
             <div className="w-full pb-6 flex flex-row justify-between items-center">
               <h1 className="text-white/70 text-2xl font-bold capitalize">
                 Recently play
@@ -143,9 +141,7 @@ export default async function Home() {
               {/*  items songs */}
             </div>
           </div>
-
         </section>
-        
       </section>
     </>
   );

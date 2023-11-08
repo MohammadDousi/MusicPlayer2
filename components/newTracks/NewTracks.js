@@ -22,35 +22,35 @@ export default function NewTracks({ recentlyTrack }) {
     <Swiper
       spaceBetween={20}
       slidesPerView={5.8}
-      // breakpoints={
-      //   {
-      //     640: {
-      //       width: 640,
-      //       slidesPerView: 3,
-      //     },
-      //     768: {
-      //       width: 768,
-      //       slidesPerView: 4,
-      //     },
-      //     1024: {
-      //       width: 1024,
-      //       slidesPerView: 4,
-      //     },
-      //     1280: {
-      //       width: 1280,
-      //       slidesPerView: 5,
-      //     },
-      //     1536: {
-      //       width: 1536,
-      //       slidesPerView: 5,
-      //     },
-      //   }
-      // }
+      breakpoints={
+        {
+          320: {
+            width: 320,
+            slidesPerView: 3,
+          },
+          // 768: {
+          //   width: 768,
+          //   slidesPerView: 4,
+          // },
+          // 1024: {
+          //   width: 1024,
+          //   slidesPerView: 4,
+          // },
+          // 1280: {
+          //   width: 1280,
+          //   slidesPerView: 5,
+          // },
+          // 1536: {
+          //   width: 1536,
+          //   slidesPerView: 5,
+          // },
+        }
+      }
     >
       {recentlyTrack &&
         recentlyTrack.map((track) => (
           <SwiperSlide key={track?.id}>
-            <div className="w-full relative flex flex-col justify-start items-start gap-4 cursor-pointer overflow-hidden">
+            <div className="w-full relative p-3 md:p-0 flex flex-col justify-start items-start gap-4 cursor-pointer overflow-hidden">
               <div className="w-full h-full absolute opacity-0 hover:opacity-100 duration-300">
                 <div
                   onClick={() => {

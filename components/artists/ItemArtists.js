@@ -8,7 +8,7 @@ export default function Artists(props) {
       {data &&
         data.map((items) => (
           <Link key={items.id} href={`/track/${items.id}`}>
-            <div className="w-[110px] h-[156px] md:w-auto md:h-auto p-2 flex flex-col justify-center items-center gap-3 bg-slate-700/50 hover:bg-slate-700 duration-300 rounded-2xl">
+            <div className="w-[110px] h-[155px] md:w-auto md:h-auto p-2 flex flex-col justify-center items-center gap-3 bg-slate-700/50 hover:bg-slate-700 duration-300 rounded-2xl">
               <Image
                 src={`https://music.kaktusprog.ir/assets/file/artistsAvator/${items.avator}`}
                 alt={`https://music.kaktusprog.ir/assets/file/artistsAvator/${items.avator}`}

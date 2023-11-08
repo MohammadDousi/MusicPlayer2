@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,6 +11,9 @@ import { useEffect } from "react";
 
 export default function NewTracks({ recentlyTrack }) {
   const dispatch = useDispatch();
+  let lengthName , cutLength;
+  window.innerWidth <= 425 ? (lengthName = 18) : (cutLength = 23);
+  window.innerWidth <= 425 ? (cutLength = 15) : (cutLength = 20);
 
   useEffect(() => {
     dispatch(addPlaylist(recentlyTrack && recentlyTrack[0]));
@@ -20,37 +21,37 @@ export default function NewTracks({ recentlyTrack }) {
 
   return (
     <Swiper
+      className="!px-3 md:p-0"
       spaceBetween={20}
       slidesPerView={5.8}
-      breakpoints={
-        {
-          320: {
-            width: 320,
-            slidesPerView: 3,
-          },
-          // 768: {
-          //   width: 768,
-          //   slidesPerView: 4,
-          // },
-          // 1024: {
-          //   width: 1024,
-          //   slidesPerView: 4,
-          // },
-          // 1280: {
-          //   width: 1280,
-          //   slidesPerView: 5,
-          // },
-          // 1536: {
-          //   width: 1536,
-          //   slidesPerView: 5,
-          // },
-        }
-      }
+      breakpoints={{
+        320: {
+          width: 320,
+          spaceBetween: 15,
+          slidesPerView: 2,
+        },
+        // 768: {
+        //   width: 768,
+        //   slidesPerView: 4,
+        // },
+        // 1024: {
+        //   width: 1024,
+        //   slidesPerView: 4,
+        // },
+        // 1280: {
+        //   width: 1280,
+        //   slidesPerView: 5,
+        // },
+        // 1536: {
+        //   width: 1536,
+        //   slidesPerView: 5,
+        // },
+      }}
     >
       {recentlyTrack &&
         recentlyTrack.map((track) => (
           <SwiperSlide key={track?.id}>
-            <div className="w-full relative p-3 md:p-0 flex flex-col justify-start items-start gap-4 cursor-pointer overflow-hidden">
+            <div className="w-full relative flex flex-col justify-start items-start gap-4 cursor-pointer overflow-hidden">
               <div className="w-full h-full absolute opacity-0 hover:opacity-100 duration-300">
                 <div
                   onClick={() => {
@@ -81,8 +82,8 @@ export default function NewTracks({ recentlyTrack }) {
                   href={`/track/${track?.id}`}
                   className="w-full text-white/70 hover:text-white text-sm font-bold tracking-wide duration-300 cursor-pointerF"
                 >
-                  {track?.name.length >= 23
-                    ? `${track?.name.slice(0, 20)}...`
+                  {track?.name.length >= lengthName
+                    ? `${track?.name.slice(0, cutLength)}...`
                     : track?.name}
                 </Link>
 

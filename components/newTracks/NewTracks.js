@@ -27,11 +27,11 @@ export default function NewTracks({ recentlyTrack }) {
       spaceBetween={20}
       slidesPerView={5.8}
       breakpoints={{
-        320: {
-          width: 320,
-          spaceBetween: 15,
-          slidesPerView: 2,
-        },
+        // 320: {
+        //   width: 320,
+        //   spaceBetween: 15,
+        //   slidesPerView: 2,
+        // },
         // 768: {
         //   width: 768,
         //   slidesPerView: 4,

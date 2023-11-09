@@ -1,7 +1,6 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
-import { list } from "postcss";
 
 const initialState = {
   list: [],

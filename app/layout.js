@@ -9,12 +9,10 @@ export const metadata = {
   description: "Momment Music Service 24/7",
 };
 
-import Playlist from "@/components/playlist/Playlist";
-import Player from "@/components/player/Player";
 import Header from "@/components/header/Header";
 import { ReduxProvider } from "./redux/provider";
 import BackImage from "@/components/backImage/BackImage";
-import ShowHidePlayer from "@/components/player/showHidePlayer/ShowHidePlayer";
+import PlayListContainer from "@/components/playlist/PlayListContainer";
 
 export default function RootLayout({ children }) {
   return (
@@ -26,11 +24,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
 
-          <div className="  w-full md:w-1/5 h-full p-3 absolute flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-10">
-            <Playlist />
-            <Player />
-            <ShowHidePlayer />
-          </div>
+          <PlayListContainer />
         </ReduxProvider>
       </body>
     </html>

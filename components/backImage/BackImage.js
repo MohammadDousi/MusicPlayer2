@@ -27,7 +27,7 @@ export default function BackImage() {
       width={500}
       height={500}
       quality={80}
-      className="w-full h-full absolute object-cover blur-3xl opacity-10 z-0"
+      className="w-full h-full absolute object-cover blur-3xl opacity-80 z-0"
     />
   );
 }

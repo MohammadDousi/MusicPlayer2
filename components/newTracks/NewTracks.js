@@ -11,7 +11,8 @@ import { useEffect } from "react";
 
 export default function NewTracks({ recentlyTrack }) {
   const dispatch = useDispatch();
-  let lengthName = 23, cutLength = 20;
+  let lengthName = 23,
+    cutLength = 20;
 
   // window.innerWidth <= 425 ? (lengthName = 18) : (cutLength = 23);
   // window.innerWidth <= 425 ? (cutLength = 15) : (cutLength = 20);
@@ -19,7 +20,6 @@ export default function NewTracks({ recentlyTrack }) {
   useEffect(() => {
     dispatch(addPlaylist(recentlyTrack && recentlyTrack[0]));
   }, []);
-
 
   return (
     <Swiper
@@ -82,14 +82,14 @@ export default function NewTracks({ recentlyTrack }) {
               <section className="w-full">
                 <Link
                   href={`/track/${track?.id}`}
-                  className="w-full text-white/70 hover:text-white text-sm font-bold tracking-wide duration-300 cursor-pointerF"
+                  className="w-full text-white/70 hover:text-white text-sm font-bold tracking-wide duration-300 cursor-pointer capitalize"
                 >
                   {track?.name.length >= lengthName
                     ? `${track?.name.slice(0, cutLength)}...`
                     : track?.name}
                 </Link>
 
-                <p className="w-full text-white/40 text-sm font-normal">
+                <p className="w-full text-white/40 text-sm font-normal capitalize">
                   {track.singer}
                 </p>
               </section>

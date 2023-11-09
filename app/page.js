@@ -28,7 +28,7 @@ export default async function Home() {
         <section className="w-full flex flex-col justify-start items-start gap-3">
           <TitleContainer title="favorite artists" href="artists" />
 
-          <section className="w-full px-3 flex flex-row justify-start items-start gap-4 overflow-auto">
+          <section className="w-full px-3 md:p-0 flex flex-row justify-start items-start gap-4 overflow-auto">
             <ItemArtists data={artists} />
           </section>
         </section>
@@ -46,18 +46,22 @@ export default async function Home() {
         <section className="w-full flex flex-col justify-start items-start gap-3">
           <TitleContainer title="recommended for you" href="" />
 
-          <section className="w-full flex flex-row justify-start items-start gap-5">
-            <div className="w-1/4 px-3 py-2 relative flex flex-col justify-center items-center gap-2 bg-slate-950/50 rounded-2xl">
-              <img
+          <section className="w-full px-3 md:p-0 flex flex-row justify-start items-start gap-4 overflow-auto">
+            <div className="w-64 md:w-1/4 px-3 py-2 relative flex flex-col justify-center items-center gap-2 bg-slate-950/50 rounded-2xl">
+              <Image
                 src="/banner.jpg"
                 alt="/banner.jpg"
                 className="w-full h-32 object-cover rounded-xl"
+                width={500}
+                height={500}
+                quality={100}
               />
+
               <h2 className="w-full py-1 text-white/70 text-sm font-normal capitalize">
                 my favorite songs
               </h2>
 
-              <div className="w-9 h-9 absolute bottom-8 right-10 flex flex-row justify-center items-center backdrop-blur-sm bg-white/30 rounded-full">
+              <div className="w-9 h-9 absolute bottom-7 right-10 flex flex-row justify-center items-center backdrop-blur-sm bg-white/30 rounded-full">
                 <i className="fa fa-play text-white text-sm pl-[2px]"></i>
               </div>
             </div>

@@ -27,27 +27,27 @@ export default function NewTracks({ recentlyTrack }) {
       spaceBetween={20}
       slidesPerView={5.8}
       breakpoints={{
-        // 320: {
-        //   width: 320,
-        //   spaceBetween: 15,
-        //   slidesPerView: 2,
-        // },
-        // 768: {
-        //   width: 768,
-        //   slidesPerView: 4,
-        // },
-        // 1024: {
-        //   width: 1024,
-        //   slidesPerView: 4,
-        // },
-        // 1280: {
-        //   width: 1280,
-        //   slidesPerView: 5,
-        // },
-        // 1536: {
-        //   width: 1536,
-        //   slidesPerView: 5,
-        // },
+        320: {
+          width: 320,
+          spaceBetween: 15,
+          slidesPerView: 2,
+        },
+        768: {
+          width: 768,
+          slidesPerView: 4,
+        },
+        1024: {
+          width: 1024,
+          slidesPerView: 4,
+        },
+        1280: {
+          width: 1280,
+          slidesPerView: 5,
+        },
+        1536: {
+          width: 1536,
+          slidesPerView: 5,
+        },
       }}
     >
       {recentlyTrack &&

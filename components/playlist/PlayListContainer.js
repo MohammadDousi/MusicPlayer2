@@ -16,8 +16,8 @@ export default function PlayListContainer() {
       <div
         className={
           stateShow.toggleShowHidePlayer
-            ? "w-full md:w-1/5 h-full p-3 absolute flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-10"
-            : "hidden"
+            ? "w-full md:w-1/5 h-full p-3 absolute top-0 left-0 translate-y-full duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-10"
+            : "w-full md:w-1/5 h-full p-3 absolute duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-10"
         }
       >
         <Playlist />

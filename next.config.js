@@ -3,9 +3,9 @@ const nextConfig = {};
 // module.exports = nextConfig
 
 module.exports = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
   // Enable the React DevTools profiler
-  profiler: true,
+  // profiler: true,
 
   images: {
     domains: ["music.kaktusprog.ir"],

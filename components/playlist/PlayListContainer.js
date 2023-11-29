@@ -16,13 +16,13 @@ export default function PlayListContainer() {
       <div
         className={
           stateShow.toggleShowHidePlayer
-            ? "w-full md:w-1/5 h-0 absolute bottom-0 left-0 translate-y-full duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-10"
-            : "w-full md:w-1/5 h-screen p-3 absolute bottom-0 left-0 duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-10"
+            ? "w-full lg:w-1/5 h-0 absolute lg:relative bottom-0 left-0 translate-y-full duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-50"
+            : "w-full lg:w-1/5 h-screen lg:h-full p-3 absolute lg:relative bottom-0 left-0 duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-50 rounded-2xl"
         }
       >
         <Playlist />
         <Player />
-        <section className="w-full h-12 flex justify-center items-center">
+        <section className="lg:hidden w-full h-12 flex justify-center items-center">
           <i
             onClick={() => {
               dispatch(show());
@@ -32,7 +32,7 @@ export default function PlayListContainer() {
         </section>
       </div>
 
-      <section className="w-full py-3 absolute bottom-0 left-0 bg-slate-800 flex flex-row justify-center items-center rounded-t-2xl overflow-hidden">
+      <section className="lg:hidden w-full py-3 absolute bottom-0 left-0 bg-slate-800 flex flex-row justify-center items-center rounded-t-2xl overflow-hidden">
         
         <i
           onClick={() => {

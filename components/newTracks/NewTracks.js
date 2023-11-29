@@ -23,9 +23,9 @@ export default function NewTracks({ recentlyTrack }) {
 
   return (
     <Swiper
-      className="!w-full !px-3 md:p-0"
+      className="!w-full !px-3 lg:!px-0"
       spaceBetween={20}
-      slidesPerView={5.8}
+      slidesPerView={1}
       breakpoints={{
         320: {
           width: 320,
@@ -38,11 +38,11 @@ export default function NewTracks({ recentlyTrack }) {
         },
         1024: {
           width: 1024,
-          slidesPerView: 4,
+          slidesPerView: 7,
         },
-        1280: {
-          width: 1280,
-          slidesPerView: 5,
+        1100: {
+          width: 1100,  // lg screen
+          slidesPerView: 6.1,
         },
         1536: {
           width: 1536,
@@ -53,7 +53,7 @@ export default function NewTracks({ recentlyTrack }) {
       {recentlyTrack &&
         recentlyTrack.map((track) => (
           <SwiperSlide key={track?.id}>
-            <div className="w-full relative flex flex-col justify-start items-start gap-4 cursor-pointer overflow-hidden">
+            <div className="w-full relative flex flex-col justify-start items-start gap-4 cursor-pointer">
               <div className="w-full h-full absolute opacity-0 hover:opacity-100 duration-300">
                 <div
                   onClick={() => {

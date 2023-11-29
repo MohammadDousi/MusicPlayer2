@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={defaultFont.className}>
         <ReduxProvider>
-          <main className="w-full md:w-4/5 h-full md:px-3 flex flex-col justify-start items-center gap-4 overflow-x-hidden">
+          <main className="w-full md:w-4/5 h-screen lg:px-2 flex flex-col justify-start items-center gap-4 overflow-x-hidden">
             <Header />
             {children}
           </main>

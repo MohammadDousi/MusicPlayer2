@@ -151,25 +151,25 @@ export default function Player() {
         <Image
           src={track?.cover}
           alt={track?.cover}
-          className="w-full h-full z-0 absolute blur-3xl opacity-60 backdrop-blur-xl rounded-3xl object-cover"
+          className="w-full h-full z-0 absolute blur-3xl opacity-70 backdrop-blur-xl rounded-3xl object-cover"
           width={500}
           height={500}
           quality={100}
         />
 
-        <div className="w-full flex flex-row justify-start items-start gap-3 md:flex-col md:justify-center items-center z-10">
+        <div className="w-full flex flex-row justify-start gap-0 md:flex-col md:justify-center items-start z-10">
           <Image
             src={track?.cover}
             alt={track?.cover}
-            className="w-16 rounded-xl md:w-full md:mb-3 md:rounded-3xl shadow-2xl object-cover z-10"
+            className="w-14 rounded-xl md:w-full md:mb-3 md:rounded-3xl shadow-2xl object-cover z-10"
             width={500}
             height={500}
             quality={100}
           />
 
           <div className="w-full flex flex-col justify-center items-start">
-            <p className="text-white/70 text-base capitalize">{track?.name}</p>
-            <p className="text-white/30 text-sm capitalize">{track?.singer}</p>
+            <p className="w-full text-center text-white text-base font-bold capitalize">{track?.name}</p>
+            <p className="w-full text-center text-white/50 text-sm font-normal capitalize">{track?.singer}</p>
           </div>
         </div>
 

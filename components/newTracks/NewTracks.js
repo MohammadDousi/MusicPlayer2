@@ -41,7 +41,7 @@ export default function NewTracks({ recentlyTrack }) {
           slidesPerView: 7,
         },
         1100: {
-          width: 1100,  // lg screen
+          width: 1100, // lg screen
           slidesPerView: 6.1,
         },
         1536: {
@@ -71,6 +71,8 @@ export default function NewTracks({ recentlyTrack }) {
               </div>
 
               <Image
+                // src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+                // alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
                 src={track?.cover}
                 alt={track?.cover}
                 className="w-full h-full object-cover rounded-xl shadow-lg"

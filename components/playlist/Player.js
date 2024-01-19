@@ -149,8 +149,8 @@ export default function Player() {
       {audio?.addEventListener("ended", forwardHandler)}
       <div className="w-full h-2/5 md:h-3/5 relative py-3 px-6 flex flex-col justify-around items-center bg-slate-800 rounded-2xl overflow-hidden">
         <Image
-          src={track?.cover}
-          alt={track?.cover}
+           src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+           alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
           className="w-full h-full z-0 absolute blur-3xl opacity-70 backdrop-blur-xl rounded-3xl object-cover"
           width={500}
           height={500}
@@ -159,8 +159,8 @@ export default function Player() {
 
         <div className="w-full flex flex-row justify-start gap-0 md:flex-col md:justify-center items-start z-10">
           <Image
-            src={track?.cover}
-            alt={track?.cover}
+             src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+             alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
             className="w-14 rounded-xl md:w-full md:mb-3 md:rounded-3xl shadow-2xl object-cover z-10"
             width={500}
             height={500}

@@ -18,8 +18,8 @@ export default function ItemPlaylist({ track }) {
                       rounded-xl overflow-hidden cursor-pointer duration-300"
           >
             <Image
-              src={track?.cover}
-              alt={track?.cover}
+                src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+                alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
               className="w-full h-full absolute object-cover blur-3xl opacity-0 hover:opacity-70 rounded-lg shadow-lg duration-300 z-0"
               width={200}
               height={200}
@@ -28,9 +28,9 @@ export default function ItemPlaylist({ track }) {
             />
 
             <Image
-              src={track?.cover}
-              alt={track?.cover}
-              className="w-12 h-12 object-cover shadow-xl rounded-lg shadow-lg"
+                 src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+                 alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+              className="w-12 h-12 object-cover rounded-lg shadow-lg"
               width={200}
               height={200}
               quality={100}

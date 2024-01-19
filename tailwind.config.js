@@ -7,21 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors : {
+        primeryColor : "",
+        seconedColor : "",
       },
-
-      // keyframes: {
-      //   animMenuOpen: {
-      //     "100%": { left: "0" },
-      //   },
-      // },
-
-      // animation: {
-      //   menuHOpen: "animMenuOpen .5s 1 forwards",
-      // },
 
       keyframes: {
         animbounce: {

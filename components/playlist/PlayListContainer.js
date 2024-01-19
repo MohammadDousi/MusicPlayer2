@@ -10,7 +10,6 @@ export default function PlayListContainer() {
   const dispatch = useDispatch();
   let stateShow = useSelector((state) => state.showHidePlayerSlice);
 
-  //   w-full md:w-1/5 h-full p-3 absolute flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-10
   return (
     <>
       <div

@@ -71,8 +71,6 @@ export default function NewTracks({ recentlyTrack }) {
               </div>
 
               <Image
-                // src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
-                // alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
                 src={track?.cover}
                 alt={track?.cover}
                 className="w-full h-full object-cover rounded-xl shadow-lg"

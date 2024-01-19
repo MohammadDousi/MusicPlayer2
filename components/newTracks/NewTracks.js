@@ -73,12 +73,12 @@ export default function NewTracks({ recentlyTrack }) {
               <Image
                 src={track?.cover}
                 alt={track?.cover}
-                className="w-full h-full object-cover rounded-xl shadow-lg"
                 width={500}
                 height={500}
                 quality={100}
+                className="w-full h-full object-cover rounded-xl shadow-lg"
               />
-
+              
               <section className="w-full">
                 <Link
                   href={`/track/${track?.id}`}

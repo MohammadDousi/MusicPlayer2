@@ -91,8 +91,8 @@ export default async function Home() {
                   <div className="flex flex-row justify-start items-center gap-3 md:gap-5">
                     <Link href={`/track/${track?.id}`} className="w-auto">
                       <Image
-                        src={track?.cover}
-                        alt={track?.cover}
+                        src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+                        alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
                         className="w-14 h-14 object-cover rounded-lg shadow-xl"
                         width={200}
                         height={200}
@@ -118,7 +118,6 @@ export default async function Home() {
                     </div>
                   </div>
 
-                  {/*  btn more and time song */}
                   <div className="flex flex-row justify-start items-center gap-5">
                     <p className="hidden md:block text-sm text-white/40">
                       4:35

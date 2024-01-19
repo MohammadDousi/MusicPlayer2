@@ -71,14 +71,14 @@ export default function NewTracks({ recentlyTrack }) {
               </div>
 
               <Image
-                src={track?.cover}
-                alt={track?.cover}
+                src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+                alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
                 width={500}
                 height={500}
                 quality={100}
                 className="w-full h-full object-cover rounded-xl shadow-lg"
               />
-              
+
               <section className="w-full">
                 <Link
                   href={`/track/${track?.id}`}

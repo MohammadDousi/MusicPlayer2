@@ -1,17 +1,15 @@
-import "../styles/globals.css";
+import "./globals.css";
 
-import { Inter, Nunito, Ubuntu } from "next/font/google";
-
+import { Nunito } from "next/font/google";
 const defaultFont = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "MusicLand - Momment Music Service 24/7",
+  title: "MusicLand",
   description: "Momment Music Service 24/7",
 };
 
 import Header from "@/components/header/Header";
 import { ReduxProvider } from "./redux/provider";
-import BackImage from "@/components/backImage/BackImage";
 import PlayListContainer from "@/components/playlist/PlayListContainer";
 
 export default function RootLayout({ children }) {
@@ -20,7 +18,7 @@ export default function RootLayout({ children }) {
       <body className={defaultFont.className}>
         <ReduxProvider>
           <main className="w-full md:w-4/5 h-screen lg:px-2 flex flex-col justify-start items-center gap-4 overflow-x-hidden">
-            <Header />
+            {/* <Header /> */}
             {children}
           </main>
 

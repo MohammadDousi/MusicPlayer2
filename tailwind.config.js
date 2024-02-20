@@ -7,9 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors : {
-        primeryColor : "",
-        seconedColor : "",
+      colors: {
+        primeryBack: "#092327",
+        primeryBackDarker: "#051618",
+        textColor: "#ffffff",
+        primeryColor: "#eab308",
+        /////////////
+        secondeColor: "#0b5351",
+        accentColor: "#2ec4b6",
       },
 
       keyframes: {

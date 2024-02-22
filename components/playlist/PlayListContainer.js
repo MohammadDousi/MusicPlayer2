@@ -14,15 +14,14 @@ export default function PlayListContainer() {
   return (
     <>
       {/* <div
-        className={
-          stateShow.toggleShowHidePlayer
-            ? "w-full lg:w-1/5 h-0 absolute lg:relative bottom-0 left-0 translate-y-full duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-50"
-            : "w-full lg:w-1/5 h-screen lg:h-full p-3 absolute lg:relative bottom-0 left-0 duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-50 rounded-2xl"
-        }
+        // className={
+        //   stateShow.toggleShowHidePlayer
+        //     ? "w-full lg:w-1/5 h-0 absolute lg:relative bottom-0 left-0 translate-y-full duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-50"
+        //     : "w-full lg:w-1/5 h-screen lg:h-full p-3 absolute lg:relative bottom-0 left-0 duration-500 flex flex-col justify-start items-start bg-slate-900 overflow-hidden z-50 rounded-2xl"
+        // }
       > */}
-        <Playlist />
-        <MiniPlayer />
-        {/* <section className="lg:hidden w-full h-12 flex justify-center items-center">
+      <MiniPlayer />
+      {/* <section className="lg:hidden w-full h-12 flex justify-center items-center">
           <i
             onClick={() => {
               dispatch(show());
@@ -41,7 +40,6 @@ export default function PlayListContainer() {
           className="fas fa-angle-double-up w-full p-1 text-center text-white/50 animate-bounce"
         ></i>
       </section> */}
-      
     </>
   );
 }

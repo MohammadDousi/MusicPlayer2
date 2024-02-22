@@ -5,26 +5,23 @@ import ItemPlaylist from "./ItemPlaylist";
 import { useSelector } from "react-redux";
 
 export default function Playlist() {
-
   let data = useSelector((state) => state.playlistSlice.list);
 
   return (
-    <div className="w-full h-3/5 md:h-2/5 pt-1 md:pb-2 flex flex-col justify-start items-center gap-1 overflow-hidden">
-     
-      <div className="w-full flex flex-row justify-between items-center px-2 pb-2 border-b border-slate-800">
-        <h1 className="text-white/70 text-sm font-bold capitalize tracking-wide">queue({data.length})</h1>
-        
+    <div className="w-1/3 h-full flex flex-col justify-start items-center gap-2 overflow-hidden">
+      <div className="w-full pb-4 border-b border-textColor/10">
+        <h1 className="text-textColor/70 text-base font-bold capitalize tracking-wider">
+          queue({data.length})
+        </h1>
       </div>
 
       {(data == "" || null) && (
-        <h3 className="w-full py-4 text-white/40 text-sm text-center capitalize">
+        <h3 className="w-full py-5 text-textColor/50 text-base text-center capitalize tracking-wide">
           No items
         </h3>
       )}
 
-      {data && (
-        <ItemPlaylist track={data}/>
-      )}
+      {data && <ItemPlaylist track={data} />}
     </div>
   );
 }

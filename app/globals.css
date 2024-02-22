@@ -29,4 +29,17 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-transparent rounded-xl;
   }
+
+
+
+
+  .btnBigOrMini:before {
+    @apply content-[''] size-5 absolute bottom-[0px] -left-[16px] bg-transparent shadow-[3px_8px_0px_0px_rgba(0,0,0,0)] shadow-primeryBackDarker rounded-br-full;
+  }
+
+  .btnBigOrMini:after {
+    @apply content-[''] size-5 absolute bottom-[0px] -right-[16px] bg-transparent shadow-[-3px_8px_0px_0px_rgba(0,0,0,0)] shadow-primeryBackDarker rounded-bl-3xl;
+  }
+
+  
 }

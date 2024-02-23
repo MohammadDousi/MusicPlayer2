@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { pause, play } from "@/app/redux/features/playlistSlice";
 import Playlist from "./Playlist";
 
+import logo from "../../public/image/logo/logo.png";
+
 export default function MiniPlayer() {
   const [isBigOrMini, setIsBigOrMini] = useState(true); // false is big and true is mini
 
@@ -15,7 +17,6 @@ export default function MiniPlayer() {
     setAudio(new Audio());
   }, []);
 
-  // const [audio] = useState(new Audio());
   const [track, setTrack] = useState({});
 
   const [widthProgreesTimePlay, setWidthProgreesTimePlay] = useState(0);
@@ -87,7 +88,9 @@ export default function MiniPlayer() {
   };
 
   const forwardHandler = () => {
+    console.log(state.list)
     let newIndex = state.list.map((x) => x.id).indexOf(track?.id);
+
     newIndex++;
     if (newIndex >= state.list.length) {
       newIndex = 0;
@@ -188,12 +191,20 @@ export default function MiniPlayer() {
           />
 
           <Image
-            src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
-            alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+            src={
+              track?.cover != (null || "")
+                ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                : logo
+            }
+            alt={
+              track?.cover != (null || "")
+                ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                : logo
+            }
             className={
               isBigOrMini
                 ? "size-12 rounded-xl shadow-2xl object-cover ring-1 ring-textColor/20 ring-offset-4 ring-offset-primeryBackDarker duration-300"
-                : "w-1/3 z-10 ring-2 ring-textColor/20 ring-offset-8 ring-offset-primeryBack/70 rounded-3xl shadow-2xl object-cover duration-300"
+                : "w-1/3 z-10 ring-2 ring-textColor/20 ring-offset-8 ring-offset-primeryBack/70 rounded-3xl shadow-2xl object-cover duration-300 delay-150"
             }
             width={500}
             height={500}
@@ -214,8 +225,14 @@ export default function MiniPlayer() {
                   : "text-textColor/80 text-3xl font-bold capitalize tracking-wide"
               }
             >
-              {track?.name?.length > 20
-                ? `${track?.name?.slice(0, 18)}...`
+              {window?.innerWidth < 430
+                ? track?.name?.length > 20
+                  ? `${track?.name?.slice(0, 18)}...`
+                  : track?.name
+                : isBigOrMini
+                ? track?.name?.length > 20
+                  ? `${track?.name?.slice(0, 15)}...`
+                  : track?.name
                 : track?.name}
             </p>
             <p

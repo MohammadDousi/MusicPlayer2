@@ -7,7 +7,6 @@ import "swiper/css";
 
 import { addPlaylist, play } from "@/app/redux/features/playlistSlice";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 
 export default function NewTracks({ recentlyTrack }) {
   const dispatch = useDispatch();
@@ -16,10 +15,6 @@ export default function NewTracks({ recentlyTrack }) {
 
   // window.innerWidth <= 425 ? (lengthName = 18) : (cutLength = 23);
   // window.innerWidth <= 425 ? (cutLength = 15) : (cutLength = 20);
-
-  useEffect(() => {
-    dispatch(addPlaylist(recentlyTrack && recentlyTrack[0]));
-  }, []);
 
   return (
     <Swiper

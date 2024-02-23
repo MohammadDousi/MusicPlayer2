@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @import "./all.css";
-@import "./loadingStyle.css";
 
 @layer base {
   * {
@@ -13,15 +12,13 @@
   }
 
   body {
-    @apply w-screen h-screen p-3
-    flex flex-row justify-center items-start gap-2 overflow-hidden
-    bg-primeryBack;
+    @apply w-screen h-screen bg-primeryBack flex flex-row justify-start items-start gap-8 overflow-hidden;
   }
 
   ::-webkit-scrollbar {
     @apply w-0 h-0;
   }
-
+  
   ::-webkit-scrollbar-track {
     @apply bg-transparent;
   }

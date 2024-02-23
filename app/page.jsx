@@ -1,28 +1,30 @@
+"use client";
+
 import Image from "next/image";
 
 import ItemArtists from "@/components/artists/ItemArtists";
 import TitleContainer from "@/components/titleContainer/TitleContainer";
 import Link from "next/link";
+import { addPlaylist } from "@/app/redux/features/playlistSlice";
 
 import NewTracks from "@/components/newTracks/NewTracks";
+import { getRecentlySongs } from "@/hooks/querys";
+import { useDispatch } from "react-redux";
 
-let formData = new FormData();
-
-export default async function Home() {
-  formData.append("fun", "getFavoriteArtists");
-  const artists = await postData(
-    "https://music.kaktusprog.ir/assets/php/function.php",
-    formData
-  );
-
-  formData.append("fun", "getRecentlySongs");
-  const recentlyTrack = await postData(
-    "https://music.kaktusprog.ir/assets/php/function.php",
-    formData
-  );
+export default function Home() {
+  // formData.append("fun", "getFavoriteArtists");
+  // const artists = await postData(formData);
+  const recentlyTrack = getRecentlySongs("getRecentlySongs");
+  // const recentlyTrack = await postData(
+  //   "https://music.kaktusprog.ir/assets/php/function.php",
+  //   formData
+  // );
+  const dispatch = useDispatch();
+  recentlyTrack?.data?.data?.[0] &&
+    dispatch(addPlaylist(recentlyTrack?.data?.data?.[0]));
 
   return (
-    <section className="w-full pt-3 flex flex-col justify-start items-center gap-10 overflow-x-hidden">
+    <section className="w-full pt-3 flex flex-col justify-start items-center gap-10">
       {/* favorite artists */}
       {/* <section className="w-full flex flex-col justify-start items-start gap-3">
         <TitleContainer title="favorite artists" href="artists" />
@@ -31,13 +33,11 @@ export default async function Home() {
           <ItemArtists data={artists} />
         </section>
       </section> */}
-
       {/* new track */}
 
       <section className="w-full flex flex-col justify-start items-start gap-3">
         <TitleContainer title="new track" href="" />
-
-        <NewTracks recentlyTrack={recentlyTrack} />
+        <NewTracks recentlyTrack={recentlyTrack?.data?.data} />
       </section>
 
       {/* recommended for you */}
@@ -141,19 +141,6 @@ export default async function Home() {
           </div>
         </div>
       </section> */}
-      
     </section>
   );
-}
-
-async function postData(url = "", data) {
-  const res = await fetch(url, {
-    method: "POST",
-    body: data,
-    next: { revalidate: 0 },
-  });
-
-  if (!res.ok) return undefined;
-
-  return res.json();
 }

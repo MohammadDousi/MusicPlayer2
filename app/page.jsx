@@ -1,43 +1,20 @@
-"use client";
-
-import Image from "next/image";
-
-import ItemArtists from "@/components/artists/ItemArtists";
 import TitleContainer from "@/components/titleContainer/TitleContainer";
-import Link from "next/link";
-import { addPlaylist } from "@/app/redux/features/playlistSlice";
-
-import NewTracks from "@/components/newTracks/NewTracks";
-import { getRecentlySongs } from "@/hooks/querys";
-import { useDispatch } from "react-redux";
+import FavArtists from "@/components/artists/FavArtists";
+import NewTrack from "@/components/itemTracks/NewTrack";
 
 export default function Home() {
-  // formData.append("fun", "getFavoriteArtists");
-  // const artists = await postData(formData);
-  const recentlyTrack = getRecentlySongs("getRecentlySongs");
-  // const recentlyTrack = await postData(
-  //   "https://music.kaktusprog.ir/assets/php/function.php",
-  //   formData
-  // );
-  const dispatch = useDispatch();
-  recentlyTrack?.data?.data?.[0] &&
-    dispatch(addPlaylist(recentlyTrack?.data?.data?.[0]));
-
   return (
-    <section className="w-full pt-3 flex flex-col justify-start items-center gap-10">
-      {/* favorite artists */}
-      {/* <section className="w-full flex flex-col justify-start items-start gap-3">
-        <TitleContainer title="favorite artists" href="artists" />
-
-        <section className="w-full px-3 md:p-0 flex flex-row justify-start items-start gap-4 overflow-auto">
-          <ItemArtists data={artists} />
-        </section>
-      </section> */}
+    <>
       {/* new track */}
 
       <section className="w-full flex flex-col justify-start items-start gap-3">
         <TitleContainer title="new track" href="" />
-        <NewTracks recentlyTrack={recentlyTrack?.data?.data} />
+        <NewTrack />
+      </section>
+      {/* favorite artists */}
+      <section className="w-full flex flex-col justify-start items-start gap-3">
+        <TitleContainer title="favorite artists" href="artists" />
+        <FavArtists />
       </section>
 
       {/* recommended for you */}
@@ -141,6 +118,6 @@ export default function Home() {
           </div>
         </div>
       </section> */}
-    </section>
+    </>
   );
 }

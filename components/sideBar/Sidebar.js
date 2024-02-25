@@ -10,7 +10,7 @@ export default function Sidebar() {
   const sideTab = [
     {
       name: "home",
-      path: "",
+      path: "/",
       icon: "fa fa-home",
     },
     {

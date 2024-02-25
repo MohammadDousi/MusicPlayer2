@@ -1,15 +1,20 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   // Enable the React DevTools profiler
   profiler: true,
-  
+
   images: {
-    domains: ["music.kaktusprog.ir"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "music.kaktusprog.ir",
+        pathname: "**",
+        port: "",
+      },
+    ],
   },
-  
+
   async redirects() {
     return [
       {
@@ -22,4 +27,4 @@ module.exports = {
   },
 };
 
-// module.exports = nextConfig
+module.exports = nextConfig;

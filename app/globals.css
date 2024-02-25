@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply w-screen h-screen bg-primeryBack flex flex-row justify-start items-start gap-8 overflow-hidden;
+    @apply w-screen h-full lg:h-screen bg-primeryBack overflow-hidden;
   }
 
   ::-webkit-scrollbar {

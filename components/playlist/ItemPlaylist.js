@@ -24,12 +24,12 @@ export default function ItemPlaylist({ track }) {
               alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
               className={
                 track?.id == state?.trackPlay?.id
-                  ? "w-full h-full absolute object-cover blur-3xl opacity-70 duration-300 z-10 select-none"
-                  : "lg:w-full lg:h-full lg:absolute lg:object-cover lg:blur-3xl lg:opacity-0 lg:hover:opacity-70 lg:duration-300 lg:z-10 select-none"
+                  ? "hidden lg:block w-full h-full absolute object-cover blur-3xl opacity-70 duration-300 z-10 select-none"
+                  : "hidden lg:block w-full h-full absolute object-cover blur-3xl opacity-0 hover:opacity-70 duration-300 z-10 select-none"
               }
               width={200}
               height={200}
-              quality={100}
+              quality={40}
               onClick={() => dispatch(play(track))}
             />
 
@@ -48,7 +48,7 @@ export default function ItemPlaylist({ track }) {
                 className="flex flex-col justify-center items-start gap-0.5"
               >
                 <p className="text-textColor/80 text-base font-bold capitalize tracking-wide">
-                  {window?.innerWidth < 430
+                  {typeof window !== "undefined" && window?.innerWidth < 430
                     ? track?.name.length >= 23
                       ? `${track?.name.slice(0, 20)}...`
                       : track?.name
@@ -68,7 +68,7 @@ export default function ItemPlaylist({ track }) {
                   dispatch(removePlaylist(track?.id));
                   console.log("track? ==> " + track?.id);
                 }}
-                className="fa fa-trash text-xs lg:text-sm text-textColor/20 hover:text-textColor cursor-pointer duration-300"
+                className="fa fa-trash text-sm text-textColor/20 hover:text-textColor cursor-pointer duration-300"
               ></i>
               <i
                 onClick={() => dispatch(play(track))}

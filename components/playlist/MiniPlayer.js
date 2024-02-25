@@ -88,7 +88,7 @@ export default function MiniPlayer() {
   };
 
   const forwardHandler = () => {
-    console.log(state.list)
+    console.log(state.list);
     let newIndex = state.list.map((x) => x.id).indexOf(track?.id);
 
     newIndex++;
@@ -149,108 +149,100 @@ export default function MiniPlayer() {
         className={
           isBigOrMini
             ? "w-96 h-16 px-5 py-10 absolute right-3 bottom-3 z-30 bg-primeryBackDarker shadow-2xl shadow-textColor/5 flex flex-row justify-center items-center gap-4 rounded-2xl duration-300"
-            : "w-full h-screen p-12 absolute right-0 bottom-0 z-30 bg-primeryBackDarker flex flex-row justify-start items-start gap-12 duration-300"
+            : "w-full h-full min-h-svh lg:h-screen p-6 lg:p-12 absolute right-0 bottom-0 z-30 bg-primeryBackDarker flex flex-col lg:flex-row justify-between lg:justify-start items-center gap-4 lg:gap-12 duration-300"
         }
       >
-        <button
-          onClick={() => setIsBigOrMini(!isBigOrMini)}
-          className={
-            isBigOrMini
-              ? "btnBigOrMini absolute -top-7 left-20 -z-20 w-14 h-7 bg-primeryBackDarker text-textColor/80 rounded-t-full cursor-pointer flex justify-center items-center duration-300"
-              : "btnBigOrMini absolute top-12 right-32 rotate-180 z-20 w-14 h-7 bg-primeryBackDarker text-textColor/80 rounded-t-full cursor-pointer flex justify-center items-center duration-300"
-          }
-        >
-          <i
-            className={
-              isBigOrMini
-                ? "fa fa-angle-up mt-4 animate-bounce"
-                : "fa fa-angle-up mt-4 animate-bounce"
-            }
-          ></i>
-        </button>
-
         {!isBigOrMini && <Playlist />}
+
         <div
           className={
             isBigOrMini
-              ? "w-full h-full flex flex-row justify-center items-center gap-4"
-              : "w-2/3 h-full relative bg-primeryBack rounded-3xl flex flex-col justify-center items-center gap-6 overflow-hidden"
+              ? "w-full h-full flex flex-row justify-center items-center gap-4 shadow-xl"
+              : "w-full lg:w-2/3 p-6 lg:p-0 lg:h-full relative bg-primeryBack rounded-3xl flex flex-col justify-center items-center gap-8 overflow-hidden"
           }
         >
-          <Image
-            src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
-            alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
-            className={
-              isBigOrMini
-                ? "hidden duration-300"
-                : "hidden lg:block lg:w-full lg:h-full lg:z-0 lg:absolute lg:blur-3xl lg:opacity-20 lg:object-cover"
-            }
-            width={500}
-            height={500}
-            quality={100}
-          />
-
-          <Image
-            src={
-              track?.cover != (null || "")
-                ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
-                : logo
-            }
-            alt={
-              track?.cover != (null || "")
-                ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
-                : logo
-            }
-            className={
-              isBigOrMini
-                ? "size-12 rounded-xl shadow-2xl object-cover ring-1 ring-textColor/20 ring-offset-4 ring-offset-primeryBackDarker duration-300"
-                : "w-1/3 z-10 ring-2 ring-textColor/20 ring-offset-8 ring-offset-primeryBack/70 rounded-3xl shadow-2xl object-cover duration-300 delay-150"
-            }
-            width={500}
-            height={500}
-            quality={100}
-          />
-
           <div
             className={
               isBigOrMini
-                ? "w-full flex flex-col justify-center items-center"
-                : "w-full mt-2 z-10 flex flex-col justify-center items-center gap-1"
+                ? "w-full h-full flex flex-row justify-center items-center gap-4"
+                : "w-full flex flex-row lg:flex-col justify-center items-center gap-6"
             }
           >
-            <p
+            <Image
+              src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+              alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
               className={
                 isBigOrMini
-                  ? "w-full text-left text-textColor/80 text-base font-bold capitalize tracking-wide"
-                  : "text-textColor/80 text-3xl font-bold capitalize tracking-wide"
+                  ? "hidden duration-300"
+                  : "hidden lg:block lg:w-full lg:h-full lg:z-0 lg:absolute lg:blur-3xl lg:opacity-20 lg:object-cover"
               }
-            >
-              {window?.innerWidth < 430
-                ? track?.name?.length > 20
-                  ? `${track?.name?.slice(0, 18)}...`
-                  : track?.name
-                : isBigOrMini
-                ? track?.name?.length > 20
-                  ? `${track?.name?.slice(0, 15)}...`
-                  : track?.name
-                : track?.name}
-            </p>
-            <p
+              width={500}
+              height={500}
+              quality={40}
+            />
+
+            <Image
+              src={
+                track?.cover != (null || "")
+                  ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                  : logo
+              }
+              alt={
+                track?.cover != (null || "")
+                  ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                  : logo
+              }
               className={
                 isBigOrMini
-                  ? "w-full text-left text-textColor/50 text-sm font-normal capitalize tracking-wide"
-                  : "text-textColor/50 text-base font-normal capitalize tracking-wide"
+                  ? "size-12 rounded-xl shadow-2xl object-cover ring-1 ring-textColor/20 ring-offset-4 ring-offset-primeryBackDarker duration-300"
+                  : "size-12 lg:w-1/3 lg:h-auto lg:z-10 ring-1 lg:ring-2 ring-textColor/20 ring-offset-4 lg:ring-offset-8 ring-offset-primeryBack/70 rounded-xl lg:rounded-3xl shadow-2xl object-cover duration-300 delay-150"
+              }
+              width={500}
+              height={500}
+              quality={100}
+            />
+
+            <div
+              className={
+                isBigOrMini
+                  ? "w-full flex flex-col justify-center items-center"
+                  : "w-full lg:mt-2 z-10 flex flex-col justify-center items-center gap-1"
               }
             >
-              {track?.singer}
-            </p>
+              <p
+                className={
+                  isBigOrMini
+                    ? "w-full text-left text-textColor/80 text-base font-bold capitalize tracking-wide"
+                    : "w-full text-textColor/80 text-left lg:text-center text-base lg:text-3xl font-bold capitalize tracking-wide"
+                }
+              >
+                {typeof window !== "undefined" && window?.innerWidth < 430
+                  ? track?.name?.length > 20
+                    ? `${track?.name?.slice(0, 18)}...`
+                    : track?.name
+                  : isBigOrMini
+                  ? track?.name?.length > 20
+                    ? `${track?.name?.slice(0, 15)}...`
+                    : track?.name
+                  : track?.name}
+              </p>
+              <p
+                className={
+                  isBigOrMini
+                    ? "w-full text-left text-textColor/50 text-sm font-normal capitalize tracking-wide"
+                    : "w-full text-textColor/50 text-left lg:text-center text-sm lg:text-base font-normal capitalize tracking-wide"
+                }
+              >
+                {track?.singer}
+              </p>
+            </div>
           </div>
 
           <div
             className={
               isBigOrMini
                 ? "pr-2 pb-1 flex flex-col justify-center items-center gap-2"
-                : "w-1/3 z-10 flex flex-col justify-center items-center gap-6"
+                : "w-full lg:w-1/3 z-10 flex flex-col justify-center items-center gap-6"
             }
           >
             <div className="w-full flex flex-row justify-between items-center gap-6">
@@ -258,13 +250,13 @@ export default function MiniPlayer() {
                 className={
                   isBigOrMini
                     ? "hidden"
-                    : "fa fa-repeat text-textColor/50 hover:text-primeryColor text-base cursor-pointer duration-300"
+                    : "fa fa-repeat text-textColor/50 hover:text-primeryColor text-xl lg:text-base cursor-pointer duration-300"
                 }
               ></i>
 
               <i
                 onClick={() => backwardHandler()}
-                className="fa fa-backward-step text-textColor/50 hover:text-primeryColor text-base cursor-pointer duration-300"
+                className="fa fa-backward-step text-textColor/50 hover:text-primeryColor text-xl lg:text-base cursor-pointer duration-300"
               ></i>
               <i
                 className={
@@ -280,13 +272,13 @@ export default function MiniPlayer() {
               ></i>
               <i
                 onClick={() => forwardHandler()}
-                className="fa fa-step-forward text-textColor/50 hover:text-primeryColor text-base cursor-pointer duration-300"
+                className="fa fa-step-forward text-textColor/50 hover:text-primeryColor text-xl lg:text-base cursor-pointer duration-300"
               ></i>
               <i
                 className={
                   isBigOrMini
                     ? "hidden"
-                    : "fa fa-shuffle text-textColor/50 hover:text-primeryColor text-base cursor-pointer duration-300"
+                    : "fa fa-shuffle text-textColor/50 hover:text-primeryColor text-xl lg:text-base cursor-pointer duration-300"
                 }
               ></i>
             </div>
@@ -322,6 +314,23 @@ export default function MiniPlayer() {
               </p>
             </div>
           </div>
+
+          <button
+            onClick={() => setIsBigOrMini(!isBigOrMini)}
+            className={
+              isBigOrMini
+                ? "btnBigOrMini absolute -top-7 lg:-top-7 lg:left-20 -z-20 w-14 h-7 bg-primeryBackDarker text-textColor/80 rounded-t-full cursor-pointer flex justify-center items-center duration-300"
+                : "btnBigOrMini absolute lg:top-0 bottom-0 lg:bottom-auto lg:right-32 lg:rotate-180 z-20 w-14 h-7 bg-primeryBackDarker text-textColor/80 rounded-t-full cursor-pointer flex justify-center items-center duration-300"
+            }
+          >
+            <i
+              className={
+                isBigOrMini
+                  ? "fa fa-angle-up mt-4"
+                  : "fa fa-angle-down lg:fa-angle-up lg:-rotate-180 mt-4 text-primeryColor"
+              }
+            ></i>
+          </button>
         </div>
       </div>
     </>

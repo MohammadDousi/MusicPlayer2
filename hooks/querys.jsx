@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-let formData = new FormData();
 
 const getRecentlySongs = (queryKey) => {
-  formData.append("fun", "getRecentlySongs");
+  let formData = new FormData();
+  formData.append("fun", queryKey);
 
   const fetchData = () =>
     axios.post("https://music.kaktusprog.ir/assets/php/function.php", formData);

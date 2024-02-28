@@ -1,25 +1,18 @@
-import React from "react";
-
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import logo from "../../public/image/logo/logo.png";
-
-import { FreeMode } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/free-mode";
 import Link from "next/link";
 
-export default function ItemActor({ data }) {
-  let uniqueData;
-  if (data) {
-    uniqueData = [...new Map(data.map((item) => [item.id, item])).values()];
-  }
+import logo from "../../public/logo.png";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper/modules";
+import "swiper/css/free-mode";
+import "swiper/css";
+
+export default function ItemSinger({ data }) {
   return (
     <Swiper
       className="!w-full"
       spaceBetween={10}
-      speed={1500}
       freeMode={true}
       lazy="true"
       slidesPerView={2.8}
@@ -34,19 +27,19 @@ export default function ItemActor({ data }) {
           spaceBetween: 20,
         },
         1024: {
-          slidesPerView: 9,
-          spaceBetween: 10,
+          slidesPerView: 8,
+          spaceBetween: 15,
         },
       }}
       modules={[FreeMode]}
     >
       {data &&
-        data.map((items) => (
+        data?.map((items) => (
           <SwiperSlide key={items?.id}>
             <Link
               key={items.id}
               href={`/singer/${items.id}`}
-              className="h-52 bg-primeryBackDarker/50 p-3 rounded-2xl flex flex-col justify-start items-start gap-3 select-none overflow-hidden"
+              className="h-48 lg:h-52 bg-textColor/5 hover:bg-textColor/15 p-3 rounded-2xl flex flex-col justify-start items-start gap-3 duration-300 overflow-hidden"
             >
               <Image
                 width={100}
@@ -55,23 +48,23 @@ export default function ItemActor({ data }) {
                 loading="lazy"
                 unoptimized
                 className={
-                  items?.avator != null || ""
+                  items?.avator
                     ? "w-full h-3/4 object-cover object-top rounded-full"
                     : "w-full h-3/4 p-3 object-contain object-center rounded-full saturate-0 opacity-50 ring-1 ring-textColor/25 cursor-pointer"
                 }
                 src={
-                  items?.avator != null || ""
+                  items?.avator
                     ? `https://music.kaktusprog.ir/assets/file/artistsAvator/${items?.avator}`
                     : logo
                 }
                 alt={
-                  items?.avator != null || ""
+                  items?.avator
                     ? `https://music.kaktusprog.ir/assets/file/artistsAvator/${items?.avator}`
                     : logo
                 }
               />
 
-              <h2 className="w-full font-medium text-sm text-center text-textColor/70 tracking-wide capitalize">
+              <h2 className="w-full font-medium text-sm text-center text-textColor/50 tracking-wide capitalize">
                 {items?.name?.length >= 20
                   ? `${items?.name?.slice(0, 15)}...`
                   : items?.name}
@@ -81,10 +74,10 @@ export default function ItemActor({ data }) {
         ))}
 
       {!data && (
-        <div className="w-1/4 lg:w-28 opacity-10 flex flex-col justify-start items-start gap-3">
-          <div className="w-full lg:h-56 bg-primeryColorDarker/50 p-3 rounded-xl flex flex-col justify-start items-center gap-3 select-none overflow-hidden">
-            <div className="skeleton w-full h-3/4 !rounded-full bg-textColor/30"></div>
-            <div className="skeleton w-1/2 h-1.5 bg-textColor/30"></div>
+        <div className="w-1/4 lg:w-32 bg-textColor/5 rounded-2xl flex flex-col justify-start items-start gap-3">
+          <div className="w-full lg:h-52 p-3 flex flex-col justify-center items-center gap-3 select-none overflow-hidden">
+            <div className="w-full h-3/4 rounded-full bg-textColor/10 animate-pulse"></div>
+            <div className="w-1/2 h-2 rounded-full bg-textColor/10 animate-pulse"></div>
           </div>
         </div>
       )}

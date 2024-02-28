@@ -9,24 +9,12 @@ module.exports = {
     extend: {
       colors: {
         primeryBack: "#092327",
-        primeryBackDarker: "#051618",
+        primeryBackDarker: "#051E21",
         textColor: "#ffffff",
         primeryColor: "#eab308",
         /////////////
-        secondeColor: "#0b5351",
-        accentColor: "#2ec4b6",
-      },
-
-      keyframes: {
-        animbounce: {
-          "0%": { transform: "translateY(-8px)" },
-          "50%": { transform: "translateY(8px)" },
-          "100%": { transform: "translateY(-8px)" },
-        },
-      },
-
-      animation: {
-        animBounceCustom: "animbounce 1s ease-in-out infinite both",
+        secondeColor: "#80ffdb",
+        accentColor: "#48bfe3",
       },
     },
   },

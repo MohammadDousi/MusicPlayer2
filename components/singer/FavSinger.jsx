@@ -1,13 +1,10 @@
 "use client";
 
-import { getRecentlySongs } from "@/hooks/querys";
-import ItemArtists from "./ItemArtists";
+import { getData } from "@/hooks/querys";
+import ItemSinger from "./ItemSinger";
 
-export default function FavArtists() {
-  const { data, isError, error } = getRecentlySongs("getFavoriteArtists");
-
-  console.log(data?.data);
-
+export default function FavSinger() {
+  const { data, isError, error } = getData("getFavoriteArtists");
   return (
     <section className="w-full">
       {isError && (
@@ -15,7 +12,7 @@ export default function FavArtists() {
           something went wrong - {error.message}
         </h5>
       )}
-      <ItemArtists data={data?.data} />
+      <ItemSinger data={data?.data} />
     </section>
   );
 }

@@ -1,18 +1,97 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-
-const getRecentlySongs = (queryKey) => {
+const getData = (queryKey, queryKey2) => {
   let formData = new FormData();
   formData.append("fun", queryKey);
+
+  console.log("hi log");
+  const fetchData = () =>
+    axios.post("https://music.kaktusprog.ir/assets/php/function.php", formData);
+
+  return useQuery({
+    queryKey: ["data", queryKey, queryKey2],
+    queryFn: fetchData,
+    staleTime: 1 * (60 * 1000),
+    cacheTime: 1.1 * (60 * 1000),
+    refetchOnMount: false,
+  });
+};
+
+const getSingleTrackData = (id) => {
+  let formData = new FormData();
+  formData.append("fun", "getSingleSong");
+  formData.append("id", id);
 
   const fetchData = () =>
     axios.post("https://music.kaktusprog.ir/assets/php/function.php", formData);
 
   return useQuery({
-    queryKey: ["getData", queryKey],
+    queryKey: ["SingleTrack", id],
     queryFn: fetchData,
+    staleTime: 0.5 * (60 * 1000),
+    cacheTime: 0.6 * (60 * 1000),
+    refetchOnMount: false,
+  });
+};
+const likeTrack = (id) => {
+
+  return useMutation({
+    mutationFn: (id) => {
+      let formData = new FormData();
+      formData.append("fun", "countLikeSong");
+      formData.append("id", id);
+
+      return axios.post(
+        "https://music.kaktusprog.ir/assets/php/function.php",
+        formData
+      );
+    },
+  });
+};
+const countPlayTrack = (id) => {
+
+  console.log("hi log3");
+
+  return useMutation({
+    mutationFn: (id) => {
+      let formData = new FormData();
+      formData.append("fun", "countPlaySong");
+      formData.append("id", id);
+
+      return axios.post(
+        "https://music.kaktusprog.ir/assets/php/function.php",
+        formData
+      );
+    },
   });
 };
 
-export { getRecentlySongs };
+const getSingleSinger = (id) => {
+  let formData = new FormData();
+  formData.append("fun", "getSingleArtist");
+  formData.append("id", id);
+
+  const fetchData = () =>
+    axios.post("https://music.kaktusprog.ir/assets/php/function.php", formData);
+
+  return useQuery({
+    queryKey: ["SingleTrack", id],
+    queryFn: fetchData,
+    staleTime: 1 * (60 * 1000),
+    cacheTime: 1.1 * (60 * 1000),
+    refetchOnMount: false,
+  });
+};
+
+export {
+  getData,
+  getSingleTrackData,
+  likeTrack,
+  countPlayTrack,
+  getSingleSinger,
+};
+
+// "eslint": "^8",
+// "eslint-config-next": "14.1.0",
+// "postcss": "^8"

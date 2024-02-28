@@ -1,12 +1,12 @@
-"use client";
-
 import Image from "next/image";
+
+import logo from "../../public/logo.png";
+
 import { play, removePlaylist } from "@/app/redux/features/playlistSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function ItemPlaylist({ track }) {
   const dispatch = useDispatch();
-
   const state = useSelector((state) => state.playlistSlice);
 
   return (
@@ -20,8 +20,14 @@ export default function ItemPlaylist({ track }) {
                       rounded-xl overflow-hidden cursor-pointer duration-300 select-none"
           >
             <Image
-              src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
-              alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
+              src={
+                track?.cover &&
+                `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+              }
+              alt={
+                track?.cover &&
+                `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+              }
               className={
                 track?.id == state?.trackPlay?.id
                   ? "hidden lg:block w-full h-full absolute object-cover blur-3xl opacity-70 duration-300 z-10 select-none"
@@ -29,18 +35,32 @@ export default function ItemPlaylist({ track }) {
               }
               width={200}
               height={200}
+              unoptimized
               quality={40}
               onClick={() => dispatch(play(track))}
             />
 
             <div className="flex flex-row justify-start items-center gap-4 z-0">
               <Image
-                src={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
-                alt={`https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`}
-                className="size-14 rounded-xl shadow-2xl object-cover"
-                width={200}
-                height={200}
+                src={
+                  track?.cover
+                    ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                    : logo
+                }
+                alt={
+                  track?.cover
+                    ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                    : logo
+                }
+                className={
+                  track?.cover
+                    ? "size-14 rounded-xl shadow-2xl object-cover"
+                    : "size-14 p-1 rounded-xl shadow-2xl object-contain saturate-0"
+                }
+                width={100}
+                height={100}
                 quality={100}
+                unoptimized
               />
 
               <div
@@ -81,6 +101,21 @@ export default function ItemPlaylist({ track }) {
             </div>
           </div>
         ))}
+
+      {!track && (
+        <div className="w-full h-20 px-3 bg-primeryBack/50 flex flex-row justify-between items-center rounded-xl overflow-hidden">
+          <div className="flex flex-row justify-start items-center gap-4">
+            <div className="size-14 bg-textColor/10 animate-pulse rounded-xl"></div>
+
+            <div className="flex flex-col justify-center items-start gap-2">
+              <div className="w-52 h-2 bg-textColor/10 animate-pulse rounded-xl"></div>
+              <div className="w-32 h-2 bg-textColor/10 animate-pulse rounded-xl"></div>
+            </div>
+          </div>
+
+          <div className="size-5 bg-textColor/10 rounded-md animate-pulse"></div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,3 +1,3 @@
 export default function SingerLayout({ children }) {
-  return { children };
+  return <section>{children}</section>;
 }

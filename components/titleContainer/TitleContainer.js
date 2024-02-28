@@ -9,12 +9,9 @@ export default function TitleContainer({ title, href }) {
         </h1>
 
         {href && (
-          <Link
-            href={href}
-            className="h-8 px-3 text-textColor/80 hover:text-primeryColor border border-textColor/80 hover:border-primeryColor hover:bg-textColor/10 rounded-full text-sm font-normal capitalize"
-          >
-            see all
-          </Link>
+          <button className="h-8 px-3 text-textColor/80 hover:text-primeryColor border border-textColor/80 hover:border-primeryColor hover:bg-textColor/10 rounded-full text-sm font-normal capitalize">
+            {<Link href={href}>see all</Link>}
+          </button>
         )}
       </div>
       <hr className="w-full h-0.5 bg-textColor/10 rounded-full" />

@@ -16,26 +16,26 @@ export default function AllSinger() {
     <>
       {data?.data == false && notFound()}
 
-        {popArtists && (
-          <section className="w-full flex flex-col justify-start items-start gap-4">
-            <TitleContainer title="Pop Artists" href="" />
-            <ItemSinger data={popArtists} />
-          </section>
-        )}
+      {popArtists && (
+        <section className="w-full flex flex-col justify-start items-start gap-4">
+          <TitleContainer title="Pop Artists" href="" />
+          <ItemSinger data={popArtists} />
+        </section>
+      )}
 
-        {rapArtists && (
-          <section className="w-full flex flex-col justify-start items-start gap-4">
-            <TitleContainer title="Rap Artists" href="" />
-            <ItemSinger data={rapArtists} />
-          </section>
-        )}
+      {rapArtists && (
+        <section className="w-full flex flex-col justify-start items-start gap-4">
+          <TitleContainer title="Rap Artists" href="" />
+          <ItemSinger data={rapArtists} />
+        </section>
+      )}
 
-        {rockArtists && (
-          <section className="w-full flex flex-col justify-start items-start gap-4">
-            <TitleContainer title="Rock Artists" href="" />
-            <ItemSinger data={rockArtists} />
-          </section>
-        )}
+      {rockArtists && (
+        <section className="w-full flex flex-col justify-start items-start gap-4">
+          <TitleContainer title="Rock Artists" href="" />
+          <ItemSinger data={rockArtists} />
+        </section>
+      )}
     </>
   );
 }

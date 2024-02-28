@@ -86,7 +86,6 @@ export default function ItemPlaylist({ track }) {
               <i
                 onClick={() => {
                   dispatch(removePlaylist(track?.id));
-                  console.log("track? ==> " + track?.id);
                 }}
                 className="fa fa-trash text-sm text-textColor/20 hover:text-textColor cursor-pointer duration-300"
               ></i>

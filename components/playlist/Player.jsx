@@ -77,8 +77,6 @@ export default function Player() {
   };
 
   const playSong = () => {
-    console.log(currentTime);
-
     audio.addEventListener("timeupdate", updateProgress);
     audio.play();
   };

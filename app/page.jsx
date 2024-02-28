@@ -13,7 +13,7 @@ export default function Home() {
       </section>
 
       <section className="w-full flex flex-col justify-start items-start gap-4">
-        <TitleContainer title="favorite artists" href="singer" />
+        <TitleContainer title="favorite artists" href={`/singer`} />
         <FavSinger />
       </section>
 

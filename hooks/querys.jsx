@@ -5,7 +5,6 @@ const getData = (queryKey, queryKey2) => {
   let formData = new FormData();
   formData.append("fun", queryKey);
 
-  console.log("hi log");
   const fetchData = () =>
     axios.post("https://music.kaktusprog.ir/assets/php/function.php", formData);
 
@@ -50,8 +49,6 @@ const likeTrack = (id) => {
   });
 };
 const countPlayTrack = (id) => {
-
-  console.log("hi log3");
 
   return useMutation({
     mutationFn: (id) => {

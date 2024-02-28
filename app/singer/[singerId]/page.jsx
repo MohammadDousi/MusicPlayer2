@@ -11,8 +11,6 @@ export default function Singer({ params }) {
     error: errorSinger,
   } = getSingleSinger(params.singerId);
 
-  console.log(dataSinger);
-
   return (
     <>
         <section className="w-full h-full lg:h-full z-10 relative flex flex-col lg:flex-row justify-start lg:justify-start items-start gap-10">

@@ -7,20 +7,20 @@ import { getData } from "@/hooks/querys";
 export default function AllSinger() {
   const { data, isError, error } = getData("getAllArtists" ,"all signer");
 
-  // const popArtists = data?.data?.filter((item) => item?.geners === "pop");
-  // const rapArtists = data?.data?.filter((item) => item?.geners === "rap");
-  // const rockArtists = data?.data?.filter((item) => item?.geners === "rock");
+  const popArtists = data?.data?.filter((item) => item?.geners === "pop");
+  const rapArtists = data?.data?.filter((item) => item?.geners === "rap");
+  const rockArtists = data?.data?.filter((item) => item?.geners === "rock");
 
   return (
     <>
-      {/* {popArtists && ( */}
+      {popArtists && (
         <section className="w-full flex flex-col justify-start items-start gap-4">
           <TitleContainer title="Pop Artists" href="" />
-          <ItemSinger data={data?.data} />
+          <ItemSinger data={popArtists} />
         </section>
-      {/* )} */}
+      )}
 
-      {/* {rapArtists && (
+      {rapArtists && (
         <section className="w-full flex flex-col justify-start items-start gap-4">
           <TitleContainer title="Rap Artists" href="" />
           <ItemSinger data={rapArtists} />
@@ -32,7 +32,7 @@ export default function AllSinger() {
           <TitleContainer title="Rock Artists" href="" />
           <ItemSinger data={rockArtists} />
         </section>
-      )} */}
+      )}
     </>
   );
 }

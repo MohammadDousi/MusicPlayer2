@@ -3,10 +3,9 @@
 import ItemSinger from "@/components/singer/ItemSinger";
 import TitleContainer from "@/components/titleContainer/TitleContainer";
 import { getData } from "@/hooks/querys";
-import { notFound } from "next/navigation";
 
 export default function AllSinger() {
-  const { data, isError, error } = getData("getAllArtists");
+  const { data, isError, error } = getData("getAllArtists" ,"all signer");
 
   const popArtists = data?.data?.filter((item) => item?.geners === "pop");
   const rapArtists = data?.data?.filter((item) => item?.geners === "rap");
@@ -14,8 +13,6 @@ export default function AllSinger() {
 
   return (
     <>
-      {data?.data == false && notFound()}
-
       {popArtists && (
         <section className="w-full flex flex-col justify-start items-start gap-4">
           <TitleContainer title="Pop Artists" href="" />

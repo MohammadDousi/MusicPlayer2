@@ -8,7 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "music.kaktusprog.ir",
+        hostname: "musicland.kaktusprog.ir",
         pathname: "**",
         port: "",
       },

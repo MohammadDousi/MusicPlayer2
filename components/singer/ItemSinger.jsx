@@ -54,12 +54,12 @@ export default function ItemSinger({ data }) {
                 }
                 src={
                   items?.avator
-                    ? `https://music.kaktusprog.ir/assets/file/artistsAvator/${items?.avator}`
+                    ? `https://musicland.kaktusprog.ir/assets/file/artistsAvator/${items?.avator}`
                     : logo
                 }
                 alt={
                   items?.avator
-                    ? `https://music.kaktusprog.ir/assets/file/artistsAvator/${items?.avator}`
+                    ? `https://musicland.kaktusprog.ir/assets/file/artistsAvator/${items?.avator}`
                     : logo
                 }
               />

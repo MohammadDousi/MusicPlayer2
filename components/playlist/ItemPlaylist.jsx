@@ -22,11 +22,11 @@ export default function ItemPlaylist({ track }) {
             <Image
               src={
                 track?.cover &&
-                `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
               }
               alt={
                 track?.cover &&
-                `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
               }
               className={
                 track?.id == state?.trackPlay?.id
@@ -44,12 +44,12 @@ export default function ItemPlaylist({ track }) {
               <Image
                 src={
                   track?.cover
-                    ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                    ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
                     : logo
                 }
                 alt={
                   track?.cover
-                    ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                    ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
                     : logo
                 }
                 className={

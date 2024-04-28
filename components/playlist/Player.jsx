@@ -71,7 +71,7 @@ export default function Player() {
   };
 
   const loadSong = (name) => {
-    audio.src = `https://music.kaktusprog.ir/assets/file/song/${name}.mp3`;
+    audio.src = `https://musicland.kaktusprog.ir/assets/file/song/${name}.mp3`;
     audio.load();
     playSong();
   };
@@ -180,12 +180,12 @@ export default function Player() {
             <Image
               src={
                 track?.cover
-                  ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                  ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
                   : logo
               }
               alt={
                 track?.cover
-                  ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                  ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
                   : logo
               }
               className={
@@ -202,12 +202,12 @@ export default function Player() {
             <Image
               src={
                 track?.cover
-                  ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                  ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
                   : logo
               }
               alt={
                 track?.cover
-                  ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                  ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
                   : logo
               }
               className={

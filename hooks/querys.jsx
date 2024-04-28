@@ -6,7 +6,7 @@ const getData = (queryKey, queryKey2) => {
   formData.append("fun", queryKey);
 
   const fetchData = () =>
-    axios.post("https://music.kaktusprog.ir/assets/php/function.php", formData);
+    axios.post("https://musicland.kaktusprog.ir/assets/php/function.php", formData);
 
   return useQuery({
     queryKey: ["data", queryKey, queryKey2],
@@ -23,7 +23,7 @@ const getSingleTrackData = (id) => {
   formData.append("id", id);
 
   const fetchData = () =>
-    axios.post("https://music.kaktusprog.ir/assets/php/function.php", formData);
+    axios.post("https://musicland.kaktusprog.ir/assets/php/function.php", formData);
 
   return useQuery({
     queryKey: ["SingleTrack", id],
@@ -33,6 +33,7 @@ const getSingleTrackData = (id) => {
     refetchOnMount: false,
   });
 };
+
 const likeTrack = (id) => {
 
   return useMutation({
@@ -42,7 +43,7 @@ const likeTrack = (id) => {
       formData.append("id", id);
 
       return axios.post(
-        "https://music.kaktusprog.ir/assets/php/function.php",
+        "https://musicland.kaktusprog.ir/assets/php/function.php",
         formData
       );
     },
@@ -57,7 +58,7 @@ const countPlayTrack = (id) => {
       formData.append("id", id);
 
       return axios.post(
-        "https://music.kaktusprog.ir/assets/php/function.php",
+        "https://musicland.kaktusprog.ir/assets/php/function.php",
         formData
       );
     },
@@ -70,7 +71,7 @@ const getSingleSinger = (id) => {
   formData.append("id", id);
 
   const fetchData = () =>
-    axios.post("https://music.kaktusprog.ir/assets/php/function.php", formData);
+    axios.post("https://musicland.kaktusprog.ir/assets/php/function.php", formData);
 
   return useQuery({
     queryKey: ["SingleTrack", id],
@@ -88,7 +89,3 @@ export {
   countPlayTrack,
   getSingleSinger,
 };
-
-// "eslint": "^8",
-// "eslint-config-next": "14.1.0",
-// "postcss": "^8"

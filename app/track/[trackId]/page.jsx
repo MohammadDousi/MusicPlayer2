@@ -54,12 +54,12 @@ export default function TrackId({ params }) {
         <Image
           src={
             track?.data?.cover
-              ? `https://music.kaktusprog.ir/assets/file/cover/${track?.data?.cover}`
+              ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.data?.cover}`
               : logo
           }
           alt={
             track?.data?.cover
-              ? `https://music.kaktusprog.ir/assets/file/cover/${track?.data?.cover}`
+              ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.data?.cover}`
               : "logo"
           }
           className={
@@ -81,12 +81,12 @@ export default function TrackId({ params }) {
             <Image
               src={
                 track?.data?.cover
-                  ? `https://music.kaktusprog.ir/assets/file/cover/${track?.data?.cover}`
+                  ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.data?.cover}`
                   : logo
               }
               alt={
                 track?.data?.cover
-                  ? `https://music.kaktusprog.ir/assets/file/cover/${track?.data?.cover}`
+                  ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.data?.cover}`
                   : "logo"
               }
               className={

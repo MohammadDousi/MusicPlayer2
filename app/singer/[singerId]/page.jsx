@@ -27,12 +27,12 @@ export default function Singer({ params }) {
               }
               src={
                 dataSinger?.data?.avator
-                  ? `https://music.kaktusprog.ir/assets/file/artistsAvator/${dataSinger?.data?.avator}`
+                  ? `https://musicland.kaktusprog.ir/assets/file/artistsAvator/${dataSinger?.data?.avator}`
                   : logo
               }
               alt={
                 dataSinger?.data?.avator
-                  ? `https://music.kaktusprog.ir/assets/file/artistsAvator/${dataSinger?.data?.avator}`
+                  ? `https://musicland.kaktusprog.ir/assets/file/artistsAvator/${dataSinger?.data?.avator}`
                   : logo
               }
             />

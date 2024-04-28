@@ -24,12 +24,12 @@ export default function DownloadBox({ data , showDownloadBox , handleClick }) {
         <Image
           src={
             data?.cover
-              ? `https://music.kaktusprog.ir/assets/file/cover/${data?.cover}`
+              ? `https://musicland.kaktusprog.ir/assets/file/cover/${data?.cover}`
               : logo
           }
           alt={
             data?.cover
-              ? `https://music.kaktusprog.ir/assets/file/cover/${data?.cover}`
+              ? `https://musicland.kaktusprog.ir/assets/file/cover/${data?.cover}`
               : logo
           }
           className={
@@ -48,7 +48,7 @@ export default function DownloadBox({ data , showDownloadBox , handleClick }) {
           <button
             className="h-10 px-5 text-primeryBackDarker font-bold border bg-primeryColor rounded-full duration-300 capitalize tracking-wide flex flex-row justify-center items-center gap-3"
             onClick={() =>
-              (downloadFrame.current.src = `https://music.kaktusprog.ir/assets/file/song/${data?.name}.mp3`)
+              (downloadFrame.current.src = `https://musicland.kaktusprog.ir/assets/file/song/${data?.name}.mp3`)
             }
           >
             <iframe className="hidden" ref={downloadFrame} />

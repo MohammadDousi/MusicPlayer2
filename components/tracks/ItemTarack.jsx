@@ -65,12 +65,12 @@ export default function ItemTracks({ data }) {
                 <Image
                   src={
                     track?.cover
-                      ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                      ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
                       : logo
                   }
                   alt={
                     track?.cover
-                      ? `https://music.kaktusprog.ir/assets/file/cover/${track?.cover}`
+                      ? `https://musicland.kaktusprog.ir/assets/file/cover/${track?.cover}`
                       : logo
                   }
                   width={500}
